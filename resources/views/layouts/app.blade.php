@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       x-data="{ darkMode: false }"
+      x-cloak
       x-bind:class="{'dark' : darkMode === true}"
       x-init="if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         localStorage.setItem('darkMode', JSON.stringify(true));
@@ -25,6 +26,7 @@
 
     <!-- Styles -->
     @livewireStyles
+    @fluxStyles
 </head>
 <body class="font-sans antialiased">
 <x-banner/>
@@ -50,5 +52,6 @@
 @stack('modals')
 
 @livewireScripts
+@fluxScripts
 </body>
 </html>
