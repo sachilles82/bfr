@@ -1,9 +1,8 @@
 @php
 $classes = Flux::classes([
-    'p-2 pb-1 w-full',
-    'flex items-center',
-    'text-left text-xs font-medium',
-    'text-zinc-500 font-medium dark:text-zinc-300',
+    'block px-4 py-2 w-full',
+    'text-left text-xs',
+    'text-gray-400 dark:text-gray-500',
 ]);
 @endphp
 
@@ -12,3 +11,4 @@ $classes = Flux::classes([
 
     <div>{{ $slot }}</div>
 </div>
+

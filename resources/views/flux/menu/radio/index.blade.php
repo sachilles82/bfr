@@ -16,8 +16,8 @@ $classes = Flux::classes()
     ->add('text-left text-sm font-medium')
     ->add('[[disabled]_&]:opacity-50 [&[disabled]]:opacity-50')
     ->add([
-        'text-zinc-800 data-[active]:bg-zinc-50 dark:text-white data-[active]:dark:bg-zinc-600',
-        '[&_[data-flux-menu-item-icon]]:text-zinc-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
+        'text-gray-800 data-[active]:bg-gray-50 dark:text-white data-[active]:dark:bg-gray-600',
+        '[&_[data-flux-menu-item-icon]]:text-gray-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
     ])
     ;
 @endphp

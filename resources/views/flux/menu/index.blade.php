@@ -1,9 +1,9 @@
 @php
 $classes = Flux::classes()
     ->add('[:where(&)]:min-w-48 p-[.3125rem]')
-    ->add('rounded-lg shadow-sm')
-    ->add('border border-zinc-200 dark:border-zinc-600')
-    ->add('bg-white dark:bg-zinc-700')
+    ->add('rounded-md shadow-lg')
+    ->add('p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700')
+    ->add('bg-white dark:bg-gray-800')
     ;
 @endphp
 

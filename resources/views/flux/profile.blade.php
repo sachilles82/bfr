@@ -12,7 +12,7 @@ $classes = Flux::classes()
 @endphp
 
 <button type="button" {{ $attributes->class($classes) }} data-flux-profile>
-    <div class="size-8 bg-zinc-400 rounded overflow-hidden">
+    <div class="size-8 bg-zinc-400 rounded-full overflow-hidden">
         <?php if (is_string($avatar)): ?>
             <img src="{{ $avatar }}" />
         <?php else: ?>

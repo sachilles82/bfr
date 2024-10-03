@@ -5,8 +5,8 @@
 
 @php
 $classes = Flux::classes('[grid-area:header]')
-    ->add('z-10 min-h-14')
-    ->add($container ? '' : 'flex items-center px-6 lg:px-8')
+    ->add('z-10 min-h-16')
+    ->add($container ? '' : 'flex items-center px-6 lg:px-8 shadow-sm')
     ;
 
 if ($sticky) {
@@ -19,7 +19,7 @@ if ($sticky) {
 
 <header {{ $attributes->class($classes) }} data-flux-header>
     @if ($container)
-        <div class="mx-auto w-full h-full [:where(&)]:max-w-7xl px-6 lg:px-8 flex items-center">
+        <div class="mx-auto w-full h-full [:where(&)]:max-w-8xl px-6 lg:px-8 flex items-center">
             {{ $slot }}
         </div>
     @else

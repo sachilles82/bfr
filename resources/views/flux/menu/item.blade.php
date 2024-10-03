@@ -10,24 +10,24 @@
 if ($kbd) $suffix = $kbd;
 
 $classes = Flux::classes()
-    ->add('flex items-center px-2 py-1.5 w-full focus:outline-none')
+    ->add('flex items-center gap-x-3 py-2 px-3 cursor-pointer w-full focus:outline-none')
     ->add('rounded-md')
-    ->add('text-left text-sm font-medium')
+    ->add('text-left text-sm')
     ->add('[&[disabled]]:opacity-50')
     ->add(match ($variant) {
         'danger' => [
-            'text-zinc-800 data-[active]:text-red-600 data-[active]:bg-red-50 dark:text-white dark:data-[active]:bg-red-400/20 dark:data-[active]:text-red-400',
-            '[&_[data-flux-menu-item-icon]]:text-zinc-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
+            'text-gray-800 data-[active]:text-red-700 data-[active]:bg-red-50 dark:text-gray-400 dark:data-[active]:bg-red-400/10 dark:data-[active]:text-red-400',
+            '[&_[data-flux-menu-item-icon]]:text-gray-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
         ],
         'default' => [
-            'text-zinc-800 data-[active]:bg-zinc-50 dark:text-white data-[active]:dark:bg-zinc-600',
-            '[&_[data-flux-menu-item-icon]]:text-zinc-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
+            'text-gray-800 data-[active]:bg-gray-100 dark:data-[active]:bg-gray-700/50 dark:data-[active]:text-gray-300 dark:text-gray-400',
+            '[&_[data-flux-menu-item-icon]]:text-gray-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
         ]
     })
     ;
 
 $suffixClasses = Flux::classes()
-    ->add('ml-auto text-xs text-zinc-400')
+    ->add('ml-auto text-xs text-gray-400')
     ;
 @endphp
 
