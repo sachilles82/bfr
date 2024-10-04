@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\BaseApp\Company;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
@@ -19,6 +21,8 @@ class Team extends JetstreamTeam
      */
     protected $fillable = [
         'name',
+        'user_id',
+        'company_id',
         'personal_team',
     ];
 
@@ -43,5 +47,11 @@ class Team extends JetstreamTeam
         return [
             'personal_team' => 'boolean',
         ];
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+
     }
 }

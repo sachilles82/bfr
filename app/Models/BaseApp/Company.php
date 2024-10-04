@@ -1,16 +1,15 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models\BaseApp;
 
+use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\BelongsToTeam;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class {{ class }} extends Model
+class Company extends Model
 {
     use HasFactory;
-    use BelongsToTeam;
     use SoftDeletes;
 
     /**
@@ -20,8 +19,7 @@ class {{ class }} extends Model
          */
         protected $fillable = [
             'name',
-            'company_id',
-            'current_team_id',
+            'owner_id',
             'created_by',
         ];
 }

@@ -2,6 +2,9 @@
 
 namespace App\Traits;
 
+use App\Models\BaseApp\Company;
+use App\Models\Team;
+use App\Models\User;
 use App\Scopes\TeamScope;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -25,19 +28,19 @@ trait BelongsToTeam
         });
     }
 
-//    public function team()
-//    {
-//        return $this->belongsTo(Team::class);
-//    }
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
-//    public function company()
-//    {
-//        return $this->belongsTo(Company::class);
-//    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
-//    public function creator()
-//    {
-//        return $this->belongsTo(User::class, 'created_by');
-//    }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 
 }
