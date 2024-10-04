@@ -31,26 +31,7 @@
 <body class="font-sans antialiased h-full overflow-hidden dark:bg-gray-900">
 <div x-data="{menu : false}" class="flex h-full">
     <!-- Narrow sidebar -->
-{{--    <x-app.navigation.sidebar/>--}}
-
-    <!--Mobile menu-->
-{{--    <x-app.navigation.mobile/>--}}
-
-    <!-- Main area -->
-{{--    <div class="flex flex-1 flex-col overflow-hidden">--}}
-{{--        <x-app.navigation.header/>--}}
-{{--        <!-- Main content -->--}}
-{{--        {{$slot}}--}}
-{{--    </div>--}}
-
-    <!-- Narrow sidebar -->
     <x-navigation.sidebar/>
-
-
-    <!--
-      Mobile menu Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-
-
 
     <!-- Content area -->
     <div class="flex flex-1 flex-col overflow-hidden">
@@ -68,7 +49,7 @@
             </main>
 
             <!-- Secondary column (hidden on smaller screens) -->
-            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/10 border-gray-200 bg-white dark:bg-gray-900 lg:block">
+            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/5 border-gray-200 bg-white dark:bg-gray-900 lg:block">
                 <!-- Your content -->
             </aside>
         </div>
