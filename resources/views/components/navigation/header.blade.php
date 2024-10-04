@@ -61,16 +61,22 @@
 {{--</flux:header>--}}
 
 
-<flux:header container class="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 dark:border-white/5">
-    <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left"/>
+<flux:header container class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 dark:border-white/5">
+    <flux:sidebar.toggle variant="ghost" class="lg:hidden text-gray-700 dark:text-white" icon="bars-3" inset="left"/>
 
-    {{--    <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc." class="max-lg:hidden dark:hidden" />--}}
-    {{--    <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="max-lg:!hidden hidden dark:flex" />--}}
+    <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 ml-2">
+        <form class="flex flex-1" action="#" method="GET">
+            <label for="search-field" class="sr-only">Search</label>
+            <div class="relative w-full">
+                <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+                </svg>
+                <input id="search-field" class="block h-full w-full border-0 bg-transparent py-0 pl-8 pr-0 text-white focus:ring-0 sm:text-sm" placeholder="Search..." type="search" name="search">
+            </div>
+        </form>
+    </div>
 
-
-    <flux:spacer/>
     <flux:navbar class="mr-4">
-        <flux:navbar.item icon="magnifying-glass" href="#" label="Search"/>
         <button x-data="{}"
                 @click="document.documentElement.classList.toggle('dark'); localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';"
                 class="hidden sm:inline-flex items-center px-1 py-1 text-sm leading-4 font-medium rounded-full text-gray-400 transition ease-in-out duration-150 dark:text-gray-400">
@@ -91,10 +97,11 @@
         <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help"/>
     </flux:navbar>
 
+    <flux:separator vertical class="my-4" />
     <!-- Teams Dropdown -->
     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
         <flux:dropdown position="top" align="start">
-            <flux:button variant="ghost"
+            <flux:button variant="ghost" class="mx-2"
                          icon-trailing="chevron-up-down">{{ Auth::user()->currentTeam->name }}</flux:button>
             <flux:menu class="w-64">
                 <!-- Team Management -->

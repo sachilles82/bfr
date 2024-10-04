@@ -61,7 +61,7 @@ $classes = Flux::classes()
         'filled' => 'text-gray-800 dark:text-gray-400',
         'outline' => 'text-gray-800 dark:text-gray-400',
         'danger' => 'text-white',
-        'ghost' => 'text-gray-800 dark:text-gray-400',
+        'ghost' => 'text-gray-700 dark:text-gray-400',
         'subtle' => 'text-zinc-400 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white',
     })
     ->add(match ($variant) { // Border color...
