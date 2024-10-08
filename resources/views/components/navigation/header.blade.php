@@ -36,8 +36,7 @@
                     fill-rule="evenodd" clip-rule="evenodd"></path>
             </svg>
         </button>
-        <flux:navbar.item class="max-lg:hidden" icon="cog-6-tooth" href="#" label="Settings"/>
-        <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help"/>
+        <flux:navbar.item class="max-lg:hidden" icon="bell" href="#" label="notification"/>
     </flux:navbar>
 
     <flux:separator vertical class="my-4"/>
