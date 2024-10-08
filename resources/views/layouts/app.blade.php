@@ -43,15 +43,14 @@
             <main class="flex-1 overflow-y-auto">
                 <!-- Primary column -->
                 <section aria-labelledby="primary-heading" class="flex h-full min-w-0 flex-1 flex-col lg:order-last">
-                    <h1 id="primary-heading" class="sr-only">Photos</h1>
-                    <!-- Your content -->
+                    {{ $slot }}
                 </section>
             </main>
 
-            <!-- Secondary column (hidden on smaller screens) -->
-            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/5 border-gray-200 bg-white dark:bg-gray-900 lg:block">
-                <!-- Your content -->
-            </aside>
+{{--            <!-- Secondary column (hidden on smaller screens) -->--}}
+{{--            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/5 border-gray-200 bg-white dark:bg-gray-900 lg:block">--}}
+{{--                <!-- Your content -->--}}
+{{--            </aside>--}}
         </div>
     </div>
 </div>

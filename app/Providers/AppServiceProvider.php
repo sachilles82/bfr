@@ -22,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(
-            Login::class,
-            [SetTeamIdInSession::class, 'handle']
-        );
+//        Event::listen(
+//            Login::class,
+//            [SetTeamIdInSession::class, 'handle']
+//        );
     }
 }

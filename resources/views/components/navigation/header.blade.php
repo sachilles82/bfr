@@ -61,19 +61,16 @@
                 @endcan
 
                 <!-- Team Switcher -->
-                @if (Auth::user()->allTeams()->count() > 1)
-                    <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                @if (Auth::user()->allTeams()->count() > 0)
 
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
-                    </div>
+                    <flux:menu.separator/>
+
+                    <flux:menu.heading> {{ __('Switch Teams') }}</flux:menu.heading>
 
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-switchable-team :team="$team"/>
                     @endforeach
                 @endif
-                <flux:menu.separator/>
-
 
             </flux:menu>
         </flux:dropdown>

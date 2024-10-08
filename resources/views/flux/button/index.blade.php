@@ -49,27 +49,27 @@ $classes = Flux::classes()
             : Flux::applyInset($inset, top: '-mt-1', right: '-mr-2', bottom: '-mb-1', left: '-ml-2'),
     } : '')
     ->add(match ($variant) { // Background color...
-        'primary' => 'bg-zinc-800 hover:bg-zinc-900 dark:bg-white dark:hover:bg-zinc-100',
-        'filled' => 'bg-zinc-800/5 hover:bg-zinc-800/10 dark:bg-white/10 dark:hover:bg-white/20',
-        'outline' => 'bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600/75',
+        'primary' => 'bg-gray-800 hover:bg-gray-900 dark:bg-white dark:hover:bg-gray-100',
+        'filled' => 'bg-gray-800/5 hover:bg-gray-800/10 dark:bg-white/10 dark:hover:bg-white/20',
+        'outline' => 'bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600/75',
         'danger' => 'bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-500',
-        'ghost' => 'bg-transparent hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-800',
-        'subtle' => 'bg-transparent hover:bg-zinc-800/5 dark:hover:bg-white/15',
+        'ghost' => 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800',
+        'subtle' => 'bg-transparent hover:bg-gray-800/5 dark:hover:bg-white/15',
     })
     ->add(match ($variant) { // Text color...
-        'primary' => 'text-white dark:text-zinc-800',
+        'primary' => 'text-white dark:text-gray-800',
         'filled' => 'text-gray-800 dark:text-gray-400',
         'outline' => 'text-gray-800 dark:text-gray-400',
         'danger' => 'text-white',
-        'ghost' => 'text-gray-700 dark:text-gray-400',
-        'subtle' => 'text-zinc-400 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white',
+        'ghost' => 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300',
+        'subtle' => 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300',
     })
     ->add(match ($variant) { // Border color...
-        'outline' => 'border border-zinc-200 hover:border-zinc-200 border-b-zinc-300/80 dark:border-zinc-600 dark:hover:border-zinc-600',
+        'outline' => 'border border-gray-200 hover:border-gray-200 border-b-gray-300/80 dark:border-gray-600 dark:hover:border-gray-600',
          default => '',
     })
     ->add(match ($variant) { // Shadows...
-        'primary' => 'shadow-[inset_0px_1px_theme(colors.zinc.900),inset_0px_2px_theme(colors.white/.15)] dark:shadow-none',
+        'primary' => 'shadow-[inset_0px_1px_theme(colors.gray.900),inset_0px_2px_theme(colors.white/.15)] dark:shadow-none',
         'danger' => 'shadow-[inset_0px_1px_theme(colors.red.500),inset_0px_2px_theme(colors.white/.15)] dark:shadow-none',
         'outline' => match ($size) {
             'base' => 'shadow-sm',
@@ -82,7 +82,7 @@ $classes = Flux::classes()
         'outline' => 'group-[]/button:-ml-[1px] group-[]/button:first:ml-0',
         'ghost' => '',
         'subtle' => '',
-        default => 'group-[]/button:border-r group-[]/button:last:border-r-0 group-[]/button:border-black group-[]/button:dark:border-zinc-900/25',
+        default => 'group-[]/button:border-r group-[]/button:last:border-r-0 group-[]/button:border-black group-[]/button:dark:border-gray-900/25',
     })
     ->add($loading ? [ // Loading states...
         '*:transition-opacity',
@@ -115,7 +115,7 @@ $classes = Flux::classes()
         <?php endif; ?>
 
         <?php if ($kbd): ?>
-            <div class="text-xs text-zinc-500 dark:text-zinc-400">{{ $kbd }}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">{{ $kbd }}</div>
         <?php endif; ?>
 
         <?php if (is_string($iconTrailing)): ?>

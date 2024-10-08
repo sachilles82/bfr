@@ -5,6 +5,7 @@ namespace App\Scopes;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -19,7 +20,12 @@ class TeamScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('current_team_id', session()->get('current_team_id'));
+//        if (Auth::check() && Auth::user()->currentTeam) {
+//            $builder->where('current_team_id', Auth::user()->currentTeam->id);
+//        }
+
+        $builder->where('current_team_id', Auth::user()->currentTeam->id);
+
     }
 
 }

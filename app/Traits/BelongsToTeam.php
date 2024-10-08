@@ -6,6 +6,7 @@ use App\Models\BaseApp\Company;
 use App\Models\Team;
 use App\Models\User;
 use App\Scopes\TeamScope;
+use Illuminate\Support\Facades\Auth;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -21,11 +22,22 @@ trait BelongsToTeam
 
         static::addGlobalScope(new TeamScope);
 
-        static ::creating(function ($model) {
-            if(session()->has('current_team_id')){
-                $model->current_team_id = session()->get('current_team_id');
-            }
+//        static ::creating(function ($model) {
+//            if(session()->has('current_team_id')){
+//                $model->current_team_id = session()->get('current_team_id');
+//            }
+//        });
+
+//        static::creating(function ($model) {
+//            if (Auth::check() && Auth::user()->currentTeam) {
+//                $model->team_id = Auth::user()->currentTeam->id;
+//            }
+//        });
+
+        static::creating(function ($model) {
+            $model->team_id = Auth::user()->currentTeam->id;
         });
+
     }
 
     public function team()
