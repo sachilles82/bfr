@@ -81,21 +81,27 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
             ]);
 
-            // Erstelle eine neue Firma und weise dem Benutzer die company_id zu
+            /**
+             * Erstelle eine neue Firma und weise dem Benutzer die company_id zu
+             */
             $company = Company::create([
                 'name' => $input['name'] . "'s Company",
                 'owner_id' => $user->id, // Weist der Company den Besitzer zu
                 'created_by' => $user->id,
             ]);
 
-            // Aktualisiere den Benutzer mit der company_id und dem user_type
+            /**
+             * Aktualisiere den Benutzer mit der company_id und dem user_type
+             */
             $user->update([
                 'company_id' => $company->id,
                 'user_type' => UserType::Owner,
-                'created_by' => $user->id,// Bevorzugt, die Benutzer-Typen als Enum zu implementieren
+                'created_by' => $user->id,
             ]);
 
-            // Erstelle ein Team für den Benutzer
+            /**
+             * Erstelle ein Team für den Benutzer
+             */
             $this->createTeam($user, $company->id);
 
             return $user;
@@ -115,7 +121,7 @@ class CreateNewUser implements CreatesNewUsers
             'user_id' => $user->id,
             'name' => explode(' ', $user->name, 2)[0] . "'s Team",
             'personal_team' => true,
-            'company_id' => $companyId, // Weist dem Team die company_id zu
+            'company_id' => $companyId,
         ]));
     }
 }
