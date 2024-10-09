@@ -82,6 +82,9 @@
                                     <flux:navmenu.item href="#" icon="credit-card">Billing</flux:navmenu.item>
                                     <flux:navmenu.item href="#" icon="arrow-right-start-on-rectangle">Logout</flux:navmenu.item>
                                     <flux:navmenu.item href="#" icon="trash" variant="danger">Delete</flux:navmenu.item>
+                                    <flux:modal.trigger name="showEditModal">
+                                        <flux:button>Edit</flux:button>
+                                    </flux:modal.trigger>
                                 </flux:navmenu>
                             </flux:dropdown>
                         </td>
@@ -103,4 +106,27 @@
             </x-slot:pagination>
         </x-table.main>
     </x-table.container>
+
+
+{{--        <flux:modal.trigger name="showModal">--}}
+{{--            <flux:button>Create</flux:button>--}}
+{{--        </flux:modal.trigger>--}}
+
+        <flux:modal name="showEditModal" variant="flyout" class="space-y-6">
+            <div>
+                <flux:heading size="lg">Edit Department</flux:heading>
+                <flux:subheading>Edit Department</flux:subheading>
+            </div>
+
+            <flux:input wire:model="name" type="text" label="Name" placeholder="Department" />
+
+            <div class="flex">
+                <flux:spacer />
+
+                <flux:button wire:click="save" type="submit" variant="primary">Update</flux:button>
+            </div>
+        </flux:modal>
+
+
+
 </div>

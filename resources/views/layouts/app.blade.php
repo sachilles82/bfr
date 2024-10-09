@@ -57,6 +57,7 @@
 @stack('modals')
 
 @livewireScripts
+<x-flux::toast/>
 @fluxScripts
 </body>
 </html>

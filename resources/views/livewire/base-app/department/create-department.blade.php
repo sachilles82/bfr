@@ -1,12 +1,13 @@
 <div>
-    <flux:modal.trigger name="edit-profile">
+    <flux:modal.trigger name="showCreateModal">
         <flux:button>Create</flux:button>
     </flux:modal.trigger>
 
-    <flux:modal name="edit-profile" variant="flyout" class="space-y-6">
+    <flux:modal name="showCreateModal" variant="flyout" class="space-y-6">
+        <form wire:submit="save">
         <div>
-            <flux:heading size="lg">Create Department</flux:heading>
-            <flux:subheading>Create a new department</flux:subheading>
+            <flux:heading size="lg">{{ $departmentId ? 'Edit Department' : 'Add New Department' }}</flux:heading>
+            <flux:subheading>{{ $departmentId ? 'Subheading Edit Department' : 'Subheading Add New Department' }}</flux:subheading>
         </div>
 
         <flux:input wire:model="name" type="text" label="Name" placeholder="Department" />
@@ -14,7 +15,8 @@
         <div class="flex">
             <flux:spacer />
 
-            <flux:button wire:click="save" type="submit" variant="primary">Save</flux:button>
+            <flux:button type="submit" variant="primary">Save</flux:button>
         </div>
+            </form>
     </flux:modal>
 </div>

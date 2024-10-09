@@ -20,7 +20,9 @@ class TeamScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('team_id', Auth::user()->currentTeam->id);
+        if (Auth::check() && Auth::user()->currentTeam) {
+            $builder->where('team_id', Auth::user()->currentTeam->id);
+        }
     }
 
 }
