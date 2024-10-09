@@ -13,6 +13,7 @@
         "livewire/flux": "^1.0",
         "livewire/flux-pro": "^1.0",
         "livewire/livewire": "^3.0",
+        "spatie/laravel-permission": "^6.9",
         "spatie/laravel-ray": "^1.37"
     },
     "require-dev": {
