@@ -2,21 +2,23 @@
 
 namespace Database\Factories\BaseApp;
 
-use App\Models\BaseApp\Department;
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BaseApp\Department>
+ */
 class DepartmentFactory extends Factory
 {
-    protected $model = Department::class;
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'current_team_id' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+        'current_team_id' => Team::factory(),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Role\UserRole;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -48,6 +49,13 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+//    public function configure():static
+//    {
+//        return $this->afterCreating(function (User $user) {
+//            $user->assignRole(UserRole::Admin);
+//        });
+//    }
 
     /**
      * Indicate that the user should have a personal team.

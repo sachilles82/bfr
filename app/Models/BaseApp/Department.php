@@ -9,10 +9,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
-    use SoftDeletes, HasFactory, BelongsToTeam;
+    use HasFactory;
+    use BelongsToTeam;
+    use SoftDeletes;
 
-    protected $fillable = [
-        'name',
-        'current_team_id',
-    ];
+    /**
+         * The attributes that are mass assignable.
+         *
+         * @var array<int, string>
+         */
+        protected $fillable = [
+            'name',
+            'company_id',
+            'team_id',
+            'created_by',
+        ];
 }

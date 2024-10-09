@@ -1,64 +1,49 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold leading-6 text-gray-900"> {{\Illuminate\Support\Facades\Auth::user()->currentTeam->name}}</h1>
-                <p class="mt-2 text-sm text-gray-700"> {{\Illuminate\Support\Facades\Auth::user()->company->name}}</p>
-            </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
-            </div>
+    <div class="flex flex-col xl:flex-row overflow-hidden">
+        <div class="2xl:min-h-screen xl:min-h-screen sticky top-0 z-98 bg-gray-100 dark:bg-gray-900 dark:border-gray-700/50 border-gray-200 px-4 py-6 sm:px-6 lg:pl-6 xl:w-64 xl:shrink-0 xl:border-r xl:pl-6">
+                    <x-navigation.settings.nav/>
         </div>
-        <div class="mt-8 flow-root">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Role</th>
-                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay Walton</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Front-end Developer</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Member</td>
-                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                                </td>
-                            </tr>
 
-                            <!-- More people... -->
-                            </tbody>
-                        </table>
+        <main class="flex-1 overflow-y-auto">
+            <!-- Primary column -->
+            <div class="flex h-full min-w-0 flex-1 flex-col lg:order-last overflow-x-hidden">
+                <div class="flex-1 xl:flex">
+                    <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+                        <div class="relative">
+                            <div
+                                class="flex flex-col items-center justify-between py-0 md:py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                                <div class="w-full md:w-1/2">
+                                    <div class="flex items-center">
+                                        <div>
+                                            <h1 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+                                                {{ __('Roles') }}
+                                            </h1>
+                                            <p class="mt-0 text-sm text-gray-700 dark:text-gray-300">
+                                            {{ __('A list of all roles in this table') }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center">
+
+                                    <livewire:base-app.department.create-department/>
+
+                                    <div class="flex items-center w-full space-x-3 md:w-auto">
+                                        {{--                                    <livewire:admin.settings.auth.role.create-modal lazy />--}}
+                                        {{--                                                                                  <x-app.order.filter-products :$filters/>--}}
+                                        {{--                                                                                                                      <x-datepicker.date-range-picker/>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{--                                                  <x-app.order.filter-status />--}}
+                        {{--                                                  <livewire:order.index.chart lazy/>--}}
+                                            <livewire:base-app.department.department-table/>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
-
-
-
-    {{--    <div class="py-12">--}}
-{{--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
-{{--            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">--}}
-{{--                <x-welcome />jjj--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 </x-app-layout>
+
