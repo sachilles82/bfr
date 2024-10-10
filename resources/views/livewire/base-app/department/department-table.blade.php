@@ -1,14 +1,17 @@
 <div>
-    <div class="xl:mt-2 mt-1 h-full flex flex-col items-center justify-between space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+    <div
+        class="xl:mt-2 mt-1 h-full flex flex-col items-center justify-between space-y-3 md:flex-row md:space-y-0 md:space-x-4">
         <div class="w-full lg:w-1/3 md:w-1/2">
             <x-table.filters.search wire:model.live.debounce.400ms="search"/>
         </div>
-        <div class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+        <div
+            class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
             <div class="flex items-center justify-end w-full space-x-1 md:w-auto">
                 <div class="flex space-x-1" x-show="$wire.selectedIds.length > 0" x-cloak>
                     <div class="hidden sm:flex items-center justify-center">
                         <span class="text-indigo-600 dark:text-indigo-400">
-                            <span x-text="$wire.selectedIds.length" class="pr-2 text-sm font-semibold text-indigo-500 border-r border-gray-200 dark:border-gray-700 dark:text-indigo-500"></span>
+                            <span x-text="$wire.selectedIds.length"
+                                  class="pr-2 text-sm font-semibold text-indigo-500 border-r border-gray-200 dark:border-gray-700 dark:text-indigo-500"></span>
                             <span class="pl-2 pr-2">
                                 {{ __('Selected') }}
                             </span>
@@ -22,111 +25,138 @@
     </div>
 
     <x-table.container>
-        <x-table.main>
-            <x-slot:head>
-                <x-table.th.check-all/>
-                <x-table.th.notsort>
-                    {{ __('Department') }}
-                </x-table.th.notsort>
-                <x-table.th.notsort>
-                    {{ __('Team') }}
-                </x-table.th.notsort>
-                <x-table.th.notsort>
-                    {{ __('Created By') }}
-                </x-table.th.notsort>
-                <x-table.th.actions/>
-            </x-slot:head>
-            <x-slot:body>
-                @forelse($departments as $department)
-                    <tr
-                        wire:key="{{ $department->id }}"
-                        x-on:check-all.window="checked = $event.detail"
-                        x-on:update-table.window="checked = false"
-                        x-data="{ checked: false }"
-                        x-init="checked = $wire.selectedIds.includes('{{ $department->id }}')"
-                        x-bind:class="{
+        <div x-data="{checked:false}">
+            <x-table.main>
+                <x-slot:head>
+                    <x-table.th.check-all/>
+                    <x-table.th.notsort>
+                        {{ __('Department') }}
+                    </x-table.th.notsort>
+                    <x-table.th.notsort>
+                        {{ __('Team') }}
+                    </x-table.th.notsort>
+                    <x-table.th.notsort>
+                        {{ __('Created By') }}
+                    </x-table.th.notsort>
+                    <x-table.th.actions/>
+                </x-slot:head>
+                <x-slot:body>
+                    @forelse($departments as $department)
+                        <tr
+                            wire:key="{{ $department->id }}"
+                            x-on:check-all.window="checked = $event.detail"
+                            x-on:update-table.window="checked = false"
+                            x-data="{ checked: false }"
+                            x-init="checked = $wire.selectedIds.includes('{{ $department->id }}')"
+                            x-bind:class="{
                             'bg-gray-100 dark:bg-gray-800/50': checked,
                             'hover:bg-gray-100 dark:hover:bg-gray-800/50': !checked
                         }"
-                    >
-                        <td class="relative px-7 sm:w-12 sm:px-6">
-                            <div x-show="checked" x-cloak class="absolute inset-y-0 left-0 w-0.5 dark:bg-indigo-500 bg-indigo-600"></div>
-                            <x-table.tr.checkbox x-model="checked" wire:model.live="selectedIds" value="{{ $department->id }}"/>
-                        </td>
-                        <x-table.tr.cell>
-                            <div x-show="checked" x-cloak>
-                                <div
-                                    class="font-medium text-gray-500 dark:text-gray-400">
-                                    {{$department->name}}
+                        >
+                            <td class="relative px-7 sm:w-12 sm:px-6">
+                                <div x-show="checked" x-cloak
+                                     class="absolute inset-y-0 left-0 w-0.5 dark:bg-indigo-500 bg-indigo-600"></div>
+                                <x-table.tr.checkbox x-model="checked" wire:model.live="selectedIds"
+                                                     value="{{ $department->id }}"/>
+                            </td>
+                            <x-table.tr.cell>
+                                <div x-show="checked" x-cloak>
+                                    <div
+                                        class="font-medium text-gray-500 dark:text-gray-400">
+                                        {{$department->name}}
+                                    </div>
                                 </div>
-                            </div>
-                            <div x-show="!checked">
-                                <a wire:navigate.hover
-                                   href=""
-                                   class="font-medium text-gray-900 dark:text-gray-300
+                                <div x-show="!checked">
+                                    <a wire:navigate.hover
+                                       href=""
+                                       class="font-medium text-gray-900 dark:text-gray-300
                                                 hover:text-indigo-700 decoration-1 hover:underline
                                                 dark:hover:text-indigo-300">
-                                    {{$department->name}}
-                                </a>
-                            </div>
-                        </x-table.tr.cell>
-                        <x-table.tr.cell>{{ $department->team->name }}</x-table.tr.cell>
-                        <x-table.tr.cell>{{ $department->creator->name }}</x-table.tr.cell>
-                        <td x-show="!checked" class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <!-- Edit Dropdown -->
-                            <flux:dropdown position="left" align="start">
-                                <flux:button size="sm" variant="ghost" icon="ellipsis-horizontal" />
-                                <flux:navmenu>
-                                    <flux:navmenu.item href="#" icon="user">Account</flux:navmenu.item>
-                                    <flux:navmenu.item href="#" icon="building-storefront">Profile</flux:navmenu.item>
-                                    <flux:navmenu.item href="#" icon="credit-card">Billing</flux:navmenu.item>
-                                    <flux:navmenu.item href="#" icon="arrow-right-start-on-rectangle">Logout</flux:navmenu.item>
-                                    <flux:navmenu.item href="#" icon="trash" variant="danger">Delete</flux:navmenu.item>
-                                    <flux:modal.trigger name="showEditModal">
-                                        <flux:button>Edit</flux:button>
-                                    </flux:modal.trigger>
-                                </flux:navmenu>
-                            </flux:dropdown>
-                        </td>
-                        <td x-show="checked" x-cloak
-                            class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <x-table.tr.dummy-button>
-                                <x-icon.dummy-ellipsis/>
-                            </x-table.tr.dummy-button>
-                        </td>
-                    </tr>
-                @empty
-                    <x-table.tr.empty>
-                        <x-table.tr.empty-cell colspan="6"/>
-                    </x-table.tr.empty>
-                @endforelse
-            </x-slot:body>
-            <x-slot:pagination>
-                {{ $departments->links() }}
-            </x-slot:pagination>
-        </x-table.main>
+                                        {{$department->name}}
+                                    </a>
+                                </div>
+                            </x-table.tr.cell>
+                            <x-table.tr.cell>{{ $department->team->name }}</x-table.tr.cell>
+                            <x-table.tr.cell>{{ $department->creator->name }}</x-table.tr.cell>
+                            <td x-show="!checked"
+                                class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                <!-- Edit Dropdown -->
+                                <flux:dropdown align="end" offset="-15">
+                                    <flux:button class="hover:bg-gray-200/75" icon="ellipsis-horizontal" size="sm"
+                                                 variant="ghost" inset="top bottom"/>
+
+                                    <flux:menu class="min-w-32">
+                                        <flux:menu.item wire:click="edit({{ $department->id }})" icon="pencil-square">
+                                            Edit
+                                        </flux:menu.item>
+                                        <flux:modal.trigger name="department-remove">
+                                            <flux:menu.item wire:click="remove({{ $department->id }})" icon="trash"
+                                                            variant="danger">Remove
+                                            </flux:menu.item>
+                                        </flux:modal.trigger>
+                                    </flux:menu>
+                                </flux:dropdown>
+                            </td>
+                            <td x-show="checked" x-cloak
+                                class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                <flux:button class="cursor-default" icon="ellipsis-horizontal" size="sm" variant="ghost"
+                                             inset="top bottom"/>
+                            </td>
+                        </tr>
+                    @empty
+                        <x-table.tr.empty>
+                            <x-table.tr.empty-cell colspan="6"/>
+                        </x-table.tr.empty>
+                    @endforelse
+                </x-slot:body>
+                <x-slot:pagination>
+                    {{ $departments->links() }}
+                </x-slot:pagination>
+            </x-table.main>
+        </div>
     </x-table.container>
 
 
-{{--        <flux:modal.trigger name="showModal">--}}
-{{--            <flux:button>Create</flux:button>--}}
-{{--        </flux:modal.trigger>--}}
-
-        <flux:modal name="showEditModal" variant="flyout" class="space-y-6">
+    <flux:modal name="department-remove" class="min-w-[22rem]">
+        <form class="space-y-6" wire:submit="delete">
             <div>
-                <flux:heading size="lg">Edit Department</flux:heading>
-                <flux:subheading>Edit Department</flux:subheading>
-            </div>
+                <flux:heading size="lg">{{ __('Delete department?') }}</flux:heading>
 
-            <flux:input wire:model="name" type="text" label="Name" placeholder="Department" />
+                <flux:subheading>
+                    <p>{{ __('You re about to delete this department.') }}</p>
+                    <p>{{ __('This action cannot be reversed.') }}</p>
+                </flux:subheading>
+            </div>
 
             <div class="flex">
-                <flux:spacer />
+                <flux:spacer/>
 
-                <flux:button wire:click="save" type="submit" variant="primary">Update</flux:button>
+                <flux:modal.close>
+                    <flux:button variant="ghost">Cancel</flux:button>
+                </flux:modal.close>
+
+                <flux:button type="submit" variant="danger">{{ __('Delete department') }}</flux:button>
             </div>
-        </flux:modal>
+        </form>
+    </flux:modal>
 
+
+    <flux:modal name="department-edit" variant="flyout" class="space-y-6">
+        <form wire:submit="save" class="space-y-6">
+            <div>
+                <flux:heading size="lg">{{ __('Edit Department') }}</flux:heading>
+                <flux:subheading>{{ __('edit this Department') }}</flux:subheading>
+            </div>
+
+            <flux:input wire:model="name" type="text" label="Name" placeholder="Department"/>
+
+            <div class="flex">
+                <flux:spacer/>
+
+                <flux:button type="submit" variant="primary">{{ __('Update') }}</flux:button>
+            </div>
+        </form>
+    </flux:modal>
 
 
 </div>

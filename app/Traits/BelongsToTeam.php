@@ -22,19 +22,10 @@ trait BelongsToTeam
         static::addGlobalScope(new TeamScope);
 
         static::creating(function ($model) {
-            $model->team_id = Auth::user()->currentTeam->id;
-            $model->company_id = Auth::user()->company->id;
+            $model->team_id = Auth::user()->currentTeam->id ?? null;
+            $model->company_id = Auth::user()->company->id ?? null;
             $model->created_by = Auth::id();
         });
-
-//        static::creating(function ($model) {
-//            $user = Auth::user();
-//            if ($user) {
-//                $model->team_id = $user->currentTeam->id ?? null;
-//                $model->company_id = $user->company->id ?? null;
-//                $model->created_by = $user->id;
-//            }
-//        });
     }
 
     public function team()

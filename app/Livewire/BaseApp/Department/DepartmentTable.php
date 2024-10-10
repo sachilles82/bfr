@@ -12,67 +12,78 @@ use Livewire\Component;
 
 class DepartmentTable extends Component
 {
-    use Searchable;
-    use WithPerPagePagination;
-    use WithSorting;
+    use Searchable, WithPerPagePagination, WithSorting;
 
     public $selectedIds = [];
     public $idsOnPage = [];
 
+    public $departmentId;
+    public $name = '';
 
-    // Felder für Bearbeiten und Erstellen
-    public string $name = '';
-    public bool $showEditModal = false;
-    public ?Department $department = null;  // Für das aktuell bearbeitete Department
-    public int $departmentId = 0;  // Für das Speichern der Department-ID bei der Bearbeitung
-
-    // Methode zum Bearbeiten eines Departments
-    public function edit(int $departmentId): void
+    public function mount($departmentId = null): void
     {
-        // Lade das Department, das bearbeitet werden soll
-        $this->department = Department::findOrFail($departmentId);
-        $this->departmentId = $departmentId;
-
-        // Fülle die Formularfelder
-        $this->name = $this->department->name;
-        $this->showEditModal = true; // Zeigt das Formular an
+        if ($departmentId) {
+            $department = Department::findOrFail($departmentId);
+            $this->departmentId = $department->id;
+            $this->name = $department->name;
+        }
     }
 
-    // Methode zum Speichern von Änderungen (Bearbeiten oder Erstellen)
+    public function remove($departmentId): void
+    {
+        $this->departmentId = $departmentId;
+        $this->modal('department-remove')->show();
+    }
+
+    public function delete(): void
+    {
+        Department::destroy($this->departmentId);
+        $this->modal('department-remove')->close();
+    }
+
+    public function edit($departmentId): void
+    {
+        $department = Department::findOrFail($departmentId);
+        $this->departmentId = $department->id;
+        $this->name = $department->name;
+        $this->modal('department-edit')->show();
+    }
+
+    public function update(): void
+    {
+        Department::where('id', $this->departmentId)->update([
+            'name' => $this->name,
+        ]);
+    }
+
+
     public function save(): void
     {
-        // Validierung
-//        $this->validate([
-//            'name' => 'required|string|max:255',
-//        ]);
+        $this->update();
 
-        // Aktualisiere das Department, wenn vorhanden, oder erstelle ein neues
-        if ($this->department) {
-            $this->department->update([
-                'name' => $this->name,
-            ]);
-        }
-
-        // Zurücksetzen des Formulars und Modals schließen
-        $this->reset('department', 'name', 'showEditModal');
-        session()->flash('message', 'Department erfolgreich aktualisiert!');
+        $this->modal('department-edit')->close();
     }
 
+    #[On('resetFilters')]
+    public function resetFilters(): void
+    {
+        $this->resetPage();
+        $this->reset('search');
+    }
 
 
     #[On('created')]
     public function render(): View
     {
-        $query = Department::with(['creator', 'team'])
-            ->where('created_by', auth()->user()->id);
+        $query = Department::with(['creator', 'team','company']);
 
-        $query->where('created_by', auth()->user()->id);
+        $query->orderBy('created_at', 'desc');
 
         $this->applySearch($query);
 
         $departments = $this->applySimplePagination($query);
 
-        $this->idsOnPage = $departments->pluck('id')->toArray();
+        $this->idsOnPage = $departments->pluck('id')->map(fn($id) => (string)$id)->toArray();
 
         return view('livewire.base-app.department.department-table',
             compact('departments')
