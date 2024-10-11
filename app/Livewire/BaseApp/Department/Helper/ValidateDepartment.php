@@ -30,14 +30,11 @@ trait ValidateDepartment
     public function messages(): array
     {
         return [
-            'name.required' => __('Bitte füge einen Eintrag hinzu!'),
-            'name.string' => __('Dieser Eintrag muss eine Zeichenkette sein.'),
-            'name.min' => __('Der Eintrag muss mindestens 2 Zeichen lang sein.'),
-            'name.unique' => __('Dieser Eintrag existiert bereits!'),
-            'name.regex' => __('Dieser Eintrag darf keine Sonderzeichen erhalten!'),
-
-
-
+            'name.required' => __('Please add a name.'),
+            'name.string' => __('The entry must be a string.'),
+            'name.min' => __('The entry must be at least 2 characters long.'),
+            'name.regex' => __('The entry may only contain letters, numbers, and spaces.'),
+            'name.unique' => __('The entry exists already!'),
         ];
     }
 

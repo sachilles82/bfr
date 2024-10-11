@@ -86,14 +86,16 @@
                                                  variant="ghost" inset="top bottom"/>
 
                                     <flux:menu class="min-w-32">
-                                        <flux:menu.item wire:click="edit({{ $department->id }})" icon="pencil-square">
+                                        <flux:menu.item wire:click="showEditModal({{ $department->id }})" icon="pencil-square">
                                             Edit
                                         </flux:menu.item>
-                                        <flux:modal.trigger name="department-remove">
-                                            <flux:menu.item wire:click="remove({{ $department->id }})" icon="trash"
-                                                            variant="danger">Remove
-                                            </flux:menu.item>
-                                        </flux:modal.trigger>
+
+                                        <flux:menu.item wire:click="delete({{ $department->id }})"
+{{--                                                        wire:confirm="{{ __('Are you sure you want to remove this department?') }}"--}}
+                                                        wire:confirm.prompt="Are you sure?\n\nType YES to confirm|DELETE"
+                                                        icon="trash" variant="danger">
+                                            Remove
+                                        </flux:menu.item>
                                     </flux:menu>
                                 </flux:dropdown>
                             </td>
@@ -117,32 +119,8 @@
     </x-table.container>
 
 
-    <flux:modal name="department-remove" class="min-w-[22rem]">
-        <form class="space-y-6" wire:submit="delete">
-            <div>
-                <flux:heading size="lg">{{ __('Delete department?') }}</flux:heading>
-
-                <flux:subheading>
-                    <p>{{ __('You re about to delete this department.') }}</p>
-                    <p>{{ __('This action cannot be reversed.') }}</p>
-                </flux:subheading>
-            </div>
-
-            <div class="flex">
-                <flux:spacer/>
-
-                <flux:modal.close>
-                    <flux:button variant="ghost">Cancel</flux:button>
-                </flux:modal.close>
-
-                <flux:button type="submit" variant="danger">{{ __('Delete department') }}</flux:button>
-            </div>
-        </form>
-    </flux:modal>
-
-
     <flux:modal name="department-edit" variant="flyout" class="space-y-6">
-        <form wire:submit="save" class="space-y-6">
+        <form wire:submit="update" class="space-y-6">
             <div>
                 <flux:heading size="lg">{{ __('Edit Department') }}</flux:heading>
                 <flux:subheading>{{ __('edit this Department') }}</flux:subheading>
@@ -157,6 +135,5 @@
             </div>
         </form>
     </flux:modal>
-
 
 </div>

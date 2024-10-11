@@ -11,7 +11,6 @@ class CreateDepartment extends Component
 {
     use ValidateDepartment;
 
-//    public Department $department;
     public ?int $departmentId = null;
     public string $name = '';
 
@@ -25,13 +24,11 @@ class CreateDepartment extends Component
     {
         $this->validate();
 
+        $this->modal('department-add')->close();
         Department::create($this->only([
             'name'
         ]));
-
-
-        $this->modal('department-add')->close();
-        $this->dispatch('resetFilters');
+        $this->dispatch('created' );
 
         $this->reset('name');
     }

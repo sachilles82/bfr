@@ -3,6 +3,7 @@
 namespace App\Livewire\BaseApp\Department;
 
 use App\Livewire\BaseApp\Department\Helper\Searchable;
+use App\Livewire\BaseApp\Department\Helper\ValidateDepartment;
 use App\Models\BaseApp\Department;
 use App\Traits\Table\WithPerPagePagination;
 use App\Traits\Table\WithSorting;
@@ -12,7 +13,7 @@ use Livewire\Component;
 
 class DepartmentTable extends Component
 {
-    use Searchable, WithPerPagePagination, WithSorting;
+    use Searchable, WithPerPagePagination, WithSorting, ValidateDepartment;
 
     public $selectedIds = [];
     public $idsOnPage = [];
@@ -20,51 +21,54 @@ class DepartmentTable extends Component
     public $departmentId;
     public $name = '';
 
-    public function mount($departmentId = null): void
-    {
-        if ($departmentId) {
-            $department = Department::findOrFail($departmentId);
-            $this->departmentId = $department->id;
-            $this->name = $department->name;
-        }
-    }
 
-    public function remove($departmentId): void
+    public function loadDepartment(): void
     {
-        $this->departmentId = $departmentId;
-        $this->modal('department-remove')->show();
-    }
-
-    public function delete(): void
-    {
-        Department::destroy($this->departmentId);
-        $this->modal('department-remove')->close();
-    }
-
-    public function edit($departmentId): void
-    {
-        $department = Department::findOrFail($departmentId);
-        $this->departmentId = $department->id;
+        $department = Department::find($this->departmentId);
         $this->name = $department->name;
+    }
+
+    public function showEditModal($id): void
+    {
+        $this->reset();
+        $this->resetErrorBag();
+        // find department
+        $this->departmentId = $id;
+        // load department
+        $this->loadDepartment();
+        // show Modal
         $this->modal('department-edit')->show();
     }
 
+
     public function update(): void
     {
-        Department::where('id', $this->departmentId)->update([
-            'name' => $this->name,
-        ]);
-    }
+        // Authorization hinzufügen
 
+        $this->validate();
 
-    public function save(): void
-    {
-        $this->update();
+        $department = Department::find($this->departmentId);
+
+        $department -> update($this->only([
+            'name'
+        ]));
 
         $this->modal('department-edit')->close();
     }
 
-    #[On('resetFilters')]
+
+    /** Delete Function **/
+    public function delete($id): void
+    {
+        $department = Department::find($id);
+
+        // Authorization hinzufügen
+        $department->delete();
+    }
+    /** Delete Function **/
+
+
+    #[On('created')]
     public function resetFilters(): void
     {
         $this->resetPage();
@@ -72,10 +76,9 @@ class DepartmentTable extends Component
     }
 
 
-    #[On('created')]
     public function render(): View
     {
-        $query = Department::with(['creator', 'team','company']);
+        $query = Department::with(['creator', 'team', 'company']);
 
         $query->orderBy('created_at', 'desc');
 
