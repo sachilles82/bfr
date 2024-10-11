@@ -17,7 +17,7 @@ $classes = Flux::classes()
     ->add(match ($variant) {
         'danger' => [
             'text-gray-800 data-[active]:text-red-700 data-[active]:bg-red-50 dark:text-gray-400 dark:data-[active]:bg-red-400/10 dark:data-[active]:text-red-400',
-            '[&_[data-flux-menu-item-icon]]:text-gray-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current',
+            '[&_[data-flux-menu-item-icon]]:text-gray-400 dark:[&_[data-flux-menu-item-icon]]:text-white/60 [&[data-active]_[data-flux-menu-item-icon]]:text-current dark:[&[data-active]_[data-flux-menu-item-icon]]:text-red-400',
         ],
         'default' => [
             'text-gray-800 data-[active]:bg-gray-100 dark:data-[active]:bg-gray-700/50 dark:data-[active]:text-gray-300 dark:text-gray-400',
