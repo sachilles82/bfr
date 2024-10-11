@@ -87,14 +87,14 @@
 
                                     <flux:menu class="min-w-32">
                                         <flux:menu.item wire:click="showEditModal({{ $department->id }})" icon="pencil-square">
-                                            Edit
+                                            {{ __('Edit') }}
                                         </flux:menu.item>
 
                                         <flux:menu.item wire:click="delete({{ $department->id }})"
-{{--                                                        wire:confirm="{{ __('Are you sure you want to remove this department?') }}"--}}
-                                                        wire:confirm.prompt="Are you sure?\n\nType YES to confirm|DELETE"
+                                                        wire:confirm="{{ __('Are you sure you want to remove this department?') }}"
+{{--                                                        wire:confirm.prompt="Are you sure?\n\nType YES to confirm|DELETE"--}}
                                                         icon="trash" variant="danger">
-                                            Remove
+                                            {{ __('Delete') }}
                                         </flux:menu.item>
                                     </flux:menu>
                                 </flux:dropdown>
