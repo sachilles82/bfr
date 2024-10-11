@@ -2,27 +2,19 @@
     <ul role="list" class="flex gap-x-3 gap-y-1 whitespace-nowrap xl:flex-col">
         <li>
             <a href="
-{{--            {{ route('role.page') }}--}}
+            {{ route('settings.roles') }}
             " wire:navigate.hover
-               class="{{ request()->routeIs('role.page' , 'role.permission') ? 'text-indigo-600 bg-gray-50 dark:text-white dark:bg-gray-800' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' }} group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
-                <x-icon.shield-check class="h-6 w-6 {{ request()->routeIs('role.page' , 'role.permission') ? 'dark:text-white dark:bg-gray-800' : 'hover:bg-gray-50 group-hover:text-indigo-600 dark:hover:bg-gray-800 text-gray-400 dark:text-gray-500 dark:group-hover:text-white' }}"/>
+               class="{{ request()->routeIs('settings.roles') ? 'text-indigo-600 bg-gray-50 dark:text-white dark:bg-gray-800' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' }} group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
+                <x-icon.shield-check class="h-6 w-6 {{ request()->routeIs('settings.roles') ? 'dark:text-white dark:bg-gray-800' : 'hover:bg-gray-50 group-hover:text-indigo-600 dark:hover:bg-gray-800 text-gray-400 dark:text-gray-500 dark:group-hover:text-white' }}"/>
                 <span class="truncate">{{ __('Roles') }}</span>
             </a>
         </li>
         <li>
-            <a href="
-{{--            {{ route('permission.page') }}--}}
-            " wire:navigate.hover
-               class="{{ request()->routeIs('permission.page') ? 'text-indigo-600 bg-gray-50 dark:text-white dark:bg-gray-800' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' }} group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
-                <x-icon.key class="h-6 w-6 {{ request()->routeIs('permission.page') ? 'dark:text-white dark:bg-gray-800' : 'hover:bg-gray-50 group-hover:text-indigo-600 dark:hover:bg-gray-800 text-gray-400 dark:text-gray-500 dark:group-hover:text-white' }}"/><span class="truncate">{{ __('Permissions') }}</span>
-            </a>
-        </li>
-        <li>
-            <a href="" wire:navigate.hover
-               class="{{ request()->routeIs('departements.index') ? 'text-indigo-600 bg-gray-50 dark:text-white dark:bg-gray-800' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' }} group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
+            <a href="{{ route('settings.departments') }}" wire:navigate.hover
+               class="{{ request()->routeIs('settings.departments') ? 'text-indigo-600 bg-gray-50 dark:text-white dark:bg-gray-800' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white' }} group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
                 <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                      class="h-6 w-6
-                     {{ request()->routeIs('departements.index') ? 'dark:text-white dark:bg-gray-800' : 'hover:bg-gray-50 group-hover:text-indigo-600 dark:hover:bg-gray-800 text-gray-400 dark:text-gray-500 dark:group-hover:text-white' }}">
+                     {{ request()->routeIs('settings.departments') ? 'dark:text-white dark:bg-gray-800' : 'hover:bg-gray-50 group-hover:text-indigo-600 dark:hover:bg-gray-800 text-gray-400 dark:text-gray-500 dark:group-hover:text-white' }}">
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
                 </svg>

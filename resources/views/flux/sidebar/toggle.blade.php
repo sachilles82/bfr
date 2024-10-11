@@ -6,6 +6,7 @@
     ])"
     square
     x-data
-    x-on:click="document.body.hasAttribute('data-show-stashed-sidebar') ? document.body.removeAttribute('data-show-stashed-sidebar') : document.body.setAttribute('data-show-stashed-sidebar', '')"
+    x-on:click="menu = true"
+{{--    x-on:click="document.body.hasAttribute('data-show-stashed-sidebar') ? document.body.removeAttribute('data-show-stashed-sidebar') : document.body.setAttribute('data-show-stashed-sidebar', '')"--}}
     data-flux-sidebar-toggle
 />

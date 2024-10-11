@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"class="dark h-full bg-gray-50">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark h-full bg-gray-50">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,9 @@
     <!-- Narrow sidebar -->
     <x-navigation.sidebar/>
 
+    <!--Mobile menu-->
+    <x-navigation.mobilemenu/>
+
     <!-- Content area -->
     <div class="flex flex-1 flex-col overflow-hidden">
         <!-- Top bar -->
@@ -40,10 +43,10 @@
                 </section>
             </main>
 
-{{--            <!-- Secondary column (hidden on smaller screens) -->--}}
-{{--            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/5 border-gray-200 bg-white dark:bg-gray-900 lg:block">--}}
-{{--                <!-- Your content -->--}}
-{{--            </aside>--}}
+            {{--            <!-- Secondary column (hidden on smaller screens) -->--}}
+            {{--            <aside class="hidden w-96 overflow-y-auto border-l dark:border-white/5 border-gray-200 bg-white dark:bg-gray-900 lg:block">--}}
+            {{--                <!-- Your content -->--}}
+            {{--            </aside>--}}
         </div>
     </div>
 </div>

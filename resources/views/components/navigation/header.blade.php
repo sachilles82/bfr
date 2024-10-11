@@ -1,6 +1,6 @@
 <flux:header container
              class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 dark:border-white/5">
-    <flux:sidebar.toggle variant="ghost" class="lg:hidden text-gray-700 dark:text-white" icon="bars-3" inset="left"/>
+    <flux:sidebar.toggle variant="ghost" class="md:hidden text-gray-700 dark:text-white" icon="bars-3" inset="left"/>
 
     <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 ml-2">
         <form class="flex flex-1" action="#" method="GET">
