@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-      x-data="{ darkMode: false }"
-      x-cloak
-      x-bind:class="{'dark' : darkMode === true}"
-      x-init="if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        localStorage.setItem('darkMode', JSON.stringify(true));
-    }
-    darkMode = JSON.parse(localStorage.getItem('darkMode'));
-    $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-      class="dark h-full bg-gray-50"
->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"class="dark h-full bg-gray-50">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +13,9 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Dark mode Helper-->
+    <script src="{{ asset('js/darkmode-helper.js') }}"></script>
 
     <!-- Styles -->
     @livewireStyles
