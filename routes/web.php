@@ -21,11 +21,15 @@ Route::middleware([
 
     Route::prefix('settings')->group(function () {
 
-        Route::get('/roles',function () {return view('settings/roles');
-        })->name('settings.roles');
-
-        Route::get('/departments',function () {return view('settings/departments');
+        Route::get('/departments',function () {return view('live/hr/department/index');
         })->name('settings.departments');
+
+        Route::get('/departments/{department}', [
+            \App\Http\Controllers\HR\DepartmentController::class, 'show'
+        ])->name('settings.departments.show');
+
+        Route::get('/roles',function () {return view('live/hr/role/index');
+        })->name('settings.roles');
 
     });
 });

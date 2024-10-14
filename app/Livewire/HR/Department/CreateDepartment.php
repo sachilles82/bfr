@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\BaseApp\Department;
+namespace App\Livewire\HR\Department;
 
-use App\Livewire\BaseApp\Department\Helper\ValidateDepartment;
-use App\Models\BaseApp\Department;
+use App\Livewire\HR\Department\Helper\ValidateDepartment;
+use App\Models\HR\Department;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -35,6 +35,6 @@ class CreateDepartment extends Component
 
     public function render(): View
     {
-        return view('livewire.base-app.department.create-department');
+        return view('livewire.hr.department.create');
     }
 }

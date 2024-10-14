@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\BaseApp\Company;
+use App\Models\HR\Company;
 use App\Models\Team;
 use App\Models\User;
 use App\Scopes\TeamScope;

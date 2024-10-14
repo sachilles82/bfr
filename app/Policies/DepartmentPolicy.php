@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\BaseApp\Department;
+use App\Models\HR\Department;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

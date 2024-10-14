@@ -26,7 +26,7 @@
                                 <div
                                     class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center">
 
-                                    <livewire:base-app.department.create-department/>
+                                    <livewire:hr.department.create-department/>
 
 
                                     <div class="flex items-center w-full space-x-3 md:w-auto">
@@ -39,7 +39,7 @@
                         </div>
                         {{--                                                  <x-app.order.filter-status />--}}
                         {{--                                                  <livewire:order.index.chart lazy/>--}}
-{{--                        <livewire:base-app.department.department-table/>--}}
+                        <livewire:hr.department.department-table/>
                         {{--                        <livewire:base-app.department.department-table :department="$department" />--}}
 
                     </div>

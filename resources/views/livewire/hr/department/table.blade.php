@@ -68,7 +68,7 @@
                                 </div>
                                 <div x-show="!checked">
                                     <a wire:navigate.hover
-                                       href=""
+                                       href="{{ route('settings.departments.show', $department->id) }}"
                                        class="font-medium text-gray-900 dark:text-gray-300
                                                 hover:text-indigo-700 decoration-1 hover:underline
                                                 dark:hover:text-indigo-300">
@@ -92,7 +92,7 @@
 
                                         <flux:menu.item wire:click="delete({{ $department->id }})"
                                                         wire:confirm="{{ __('Are you sure you want to remove this department?') }}"
-{{--                                                        wire:confirm.prompt="Are you sure?\n\nType YES to confirm|DELETE"--}}
+                                                        {{--                                                        wire:confirm.prompt="Are you sure?\n\nType YES to confirm|DELETE"--}}
                                                         icon="trash" variant="danger">
                                             {{ __('Delete') }}
                                         </flux:menu.item>

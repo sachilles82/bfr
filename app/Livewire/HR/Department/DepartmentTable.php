@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\BaseApp\Department;
+namespace App\Livewire\HR\Department;
 
-use App\Livewire\BaseApp\Department\Helper\Searchable;
-use App\Livewire\BaseApp\Department\Helper\ValidateDepartment;
-use App\Models\BaseApp\Department;
+use App\Livewire\HR\Department\Helper\Searchable;
+use App\Livewire\HR\Department\Helper\ValidateDepartment;
+use App\Models\HR\Department;
 use App\Traits\Table\WithPerPagePagination;
 use App\Traits\Table\WithSorting;
 use Illuminate\Contracts\View\View;
@@ -88,7 +88,7 @@ class DepartmentTable extends Component
 
         $this->idsOnPage = $departments->pluck('id')->map(fn($id) => (string)$id)->toArray();
 
-        return view('livewire.base-app.department.department-table',
+        return view('livewire.hr.department.table',
             compact('departments')
         );
     }

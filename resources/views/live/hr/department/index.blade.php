@@ -4,7 +4,7 @@
             <x-navigation.settings.nav/>
         </div>
 
-        <main class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto">
             <!-- Primary column -->
             <div class="flex h-full min-w-0 flex-1 flex-col lg:order-last overflow-x-hidden">
                 <div class="flex-1 xl:flex">
@@ -19,14 +19,14 @@
                                                 {{ __('Departments') }}
                                             </h1>
                                             <p class="mt-0 text-sm text-gray-700 dark:text-gray-300">
-                                            {{ __('A list of all roles in this table') }}
+                                            {{ __('A list of all departments in this table') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div
                                     class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center">
 
-                                    <livewire:base-app.department.create-department/>
+                                    <livewire:hr.department.create-department/>
 
 
                                     <div class="flex items-center w-full space-x-3 md:w-auto">
@@ -39,13 +39,13 @@
                         </div>
                         {{--                                                  <x-app.order.filter-status />--}}
                         {{--                                                  <livewire:order.index.chart lazy/>--}}
-                        <livewire:base-app.department.department-table/>
+                        <livewire:hr.department.department-table/>
                         {{--                        <livewire:base-app.department.department-table :department="$department" />--}}
 
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 
 </x-app-layout>

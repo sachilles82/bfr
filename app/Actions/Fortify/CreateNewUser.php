@@ -3,7 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Enums\User\UserType;
-use App\Models\BaseApp\Company;
+use App\Models\HR\Company;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;

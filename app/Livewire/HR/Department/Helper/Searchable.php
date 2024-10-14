@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\BaseApp\Department\Helper;
+namespace App\Livewire\HR\Department\Helper;
 
 trait Searchable
 {

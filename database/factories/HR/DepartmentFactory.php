@@ -1,14 +1,14 @@
 <?php
 
-namespace Database\Factories\BaseApp;
+namespace Database\Factories\HR;
 
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BaseApp\Company>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HR\Department>
  */
-class CompanyFactory extends Factory
+class DepartmentFactory extends Factory
 {
     /**
      * Define the model's default state.
