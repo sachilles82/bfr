@@ -28,19 +28,14 @@
 
                                     <livewire:hr.department.create-department/>
 
-
                                     <div class="flex items-center w-full space-x-3 md:w-auto">
-                                        {{--                                    <livewire:admin.settings.auth.role.create-modal lazy />--}}
-                                        {{--                                                                                  <x-app.order.filter-products :$filters/>--}}
-                                        {{--                                                                                                                      <x-datepicker.date-range-picker/>--}}
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{--                                                  <x-app.order.filter-status />--}}
-                        {{--                                                  <livewire:order.index.chart lazy/>--}}
+
                         <livewire:hr.department.department-table/>
-                        {{--                        <livewire:base-app.department.department-table :department="$department" />--}}
 
                     </div>
                 </div>

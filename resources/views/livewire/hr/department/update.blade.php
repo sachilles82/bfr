@@ -30,7 +30,6 @@
                 <x-button.save>
                     {{ __('Update')}}
                 </x-button.save>
-
             </div>
         </form>
     </div>

@@ -11,24 +11,22 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {return view('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
     })->name('dashboard');
-
-//    Route::get('/settings/departments', function () {return view('settings/departments');
-//    })->name('departments');
-
-
 
     Route::prefix('settings')->group(function () {
 
-        Route::get('/departments',function () {return view('live/hr/department/index');
+        Route::get('/departments', function () {
+            return view('live/hr/department/index');
         })->name('settings.departments');
 
         Route::get('/departments/{department}', [
             \App\Http\Controllers\HR\DepartmentController::class, 'show'
         ])->name('settings.departments.show');
 
-        Route::get('/roles',function () {return view('live/hr/role/index');
+        Route::get('/roles', function () {
+            return view('live/hr/role/index');
         })->name('settings.roles');
 
     });

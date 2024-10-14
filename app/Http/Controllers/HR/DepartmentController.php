@@ -15,6 +15,7 @@ class DepartmentController extends Controller
 
     public function show(Department $department)
     {
+//        $this->authorize('update', $department);
         return view('live.hr.department.show', compact('department'));
     }
 
