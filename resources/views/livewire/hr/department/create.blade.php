@@ -3,7 +3,8 @@
         <flux:button>{{ __('Create') }}</flux:button>
     </flux:modal.trigger>
 
-    <flux:modal name="department-add" variant="flyout" class="space-y-6">
+    <flux:modal name="department-add"
+                variant="flyout" class="space-y-6">
         <form wire:submit="save" class="space-y-6">
             <div>
                 <flux:heading size="lg">{{ __('Add New Department') }}</flux:heading>

@@ -6,10 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -18,7 +15,7 @@ Route::middleware([
     Route::prefix('settings')->group(function () {
 
         Route::get('/departments', function () {
-            return view('live/hr/department/index');
+            return view('laravel/hr/department/index');
         })->name('settings.departments');
 
         Route::get('/departments/{department}', [
@@ -26,7 +23,7 @@ Route::middleware([
         ])->name('settings.departments.show');
 
         Route::get('/roles', function () {
-            return view('live/hr/role/index');
+            return view('laravel/hr/role/index');
         })->name('settings.roles');
 
     });

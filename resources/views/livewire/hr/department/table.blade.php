@@ -2,24 +2,14 @@
     <div
         class="xl:mt-2 mt-1 h-full flex flex-col items-center justify-between space-y-3 md:flex-row md:space-y-0 md:space-x-4">
         <div class="w-full lg:w-1/3 md:w-1/2">
-            <x-table.filters.search wire:model.live.debounce.400ms="search"/>
+            <x-table.actions.search wire:model.live.debounce.400ms="search"/>
         </div>
         <div
             class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
             <div class="flex items-center justify-end w-full space-x-1 md:w-auto">
-                <div class="flex space-x-1" x-show="$wire.selectedIds.length > 0" x-cloak>
-                    <div class="hidden sm:flex items-center justify-center">
-                        <span class="text-indigo-600 dark:text-indigo-400">
-                            <span x-text="$wire.selectedIds.length"
-                                  class="pr-2 text-sm font-semibold text-indigo-500 border-r border-gray-200 dark:border-gray-700 dark:text-indigo-500"></span>
-                            <span class="pl-2 pr-2">
-                                {{ __('Selected') }}
-                            </span>
-                        </span>
-                    </div>
-                </div>
-                <x-table.filters.reset-filters wire:click="resetFilters"/>
-                <x-table.filters.per-page/>
+                <x-table.actions.bulkactions/>
+                <x-table.actions.reset-filters wire:click="resetFilters"/>
+                <x-table.actions.per-page/>
             </div>
         </div>
     </div>
@@ -86,7 +76,8 @@
                                                  variant="ghost" inset="top bottom"/>
 
                                     <flux:menu class="min-w-32">
-                                        <flux:menu.item wire:click="showEditModal({{ $department->id }})" icon="pencil-square">
+                                        <flux:menu.item wire:click="showEditModal({{ $department->id }})"
+                                                        icon="pencil-square">
                                             {{ __('Edit') }}
                                         </flux:menu.item>
 
