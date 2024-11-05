@@ -11,7 +11,7 @@ $classes = Flux::classes()
     ->add('group/option data-[hidden]:hidden group flex items-center px-2 py-1.5 w-full focus:outline-none')
     ->add('rounded-md')
     ->add('text-left text-sm font-medium')
-    ->add('text-zinc-800 data-[active]:bg-zinc-100 [&[disabled]]:text-zinc-400 dark:text-white data-[active]:dark:bg-zinc-600 dark:[&[disabled]]:text-zinc-400')
+    ->add('text-gray-800 data-[active]:bg-gray-100 [&[disabled]]:text-gray-400 dark:text-gray-400 data-[active]:dark:bg-gray-700/50 data-[active]:dark:text-gray-300 dark:[&[disabled]]:text-gray-400')
     ->add('scroll-my-[.3125rem]') // This is here so that when a user scrolls to the top or bottom of the list, the padding is included...
     ;
 @endphp

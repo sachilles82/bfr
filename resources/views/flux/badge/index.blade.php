@@ -27,7 +27,7 @@ $classes = Flux::classes()
      * We instead need to write out each one by hand. Sorry...
      */
     ->add($variant === 'solid' ? match ($color) {
-        'zinc' => 'text-white dark:text-white bg-zinc-600 dark:bg-zinc-600 [&:is(button)]:hover:bg-zinc-700 [&:is(button)]:hover:dark:bg-zinc-500',
+        'zinc' => 'text-white dark:text-white bg-zinc-600 dark:bg-zinc-600 [&:is(button)]:hover:bg-zinc-800 [&:is(button)]:hover:dark:bg-zinc-500',
         'red' => 'text-white dark:text-white bg-red-500 dark:bg-red-600 [&:is(button)]:hover:bg-red-600 [&:is(button)]:hover:dark:bg-red-500',
         'orange' => 'text-white dark:text-white bg-orange-500 dark:bg-orange-600 [&:is(button)]:hover:bg-orange-600 [&:is(button)]:hover:dark:bg-orange-500',
         'amber' => 'text-white dark:text-zinc-950 bg-amber-500 dark:bg-amber-500 [&:is(button)]:hover:bg-amber-600 [&:is(button)]:hover:dark:bg-amber-400',

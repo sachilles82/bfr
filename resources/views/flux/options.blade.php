@@ -9,8 +9,8 @@
 $classes = Flux::classes()
     ->add('[:where(&)]:min-w-48 [:where(&)]:max-h-[20rem] p-[.3125rem]')
     ->add('rounded-lg shadow-sm')
-    ->add('border border-zinc-200 dark:border-zinc-600')
-    ->add('bg-white dark:bg-zinc-700')
+    ->add('border border-gray-300 dark:border-white/10')
+    ->add('bg-white dark:bg-gray-800')
     ;
 @endphp
 
@@ -19,7 +19,7 @@ $classes = Flux::classes()
         {{ $slot }}
     </ui-options>
 <?php else: ?>
-    <div popover class="rounded-lg shadow-sm border border-zinc-200 dark:border-zinc-600 bg-white dark:bg-zinc-700 p-[.3125rem]" data-flux-options>
+    <div popover class="rounded-lg shadow-sm border border-gray-300 dark:border-white/10 bg-white dark:bg-gray-800 p-[.3125rem]" data-flux-options>
         <?php if ($search): ?> {{ $search }} <?php else: ?>
             <flux:select.search />
         <?php endif; ?>

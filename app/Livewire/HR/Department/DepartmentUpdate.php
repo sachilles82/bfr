@@ -26,6 +26,7 @@ class DepartmentUpdate extends Component
     public function updateDepartment(): void
     {
         // this authorize
+//        $this->authorize('update', $department);
         $this->validate();
 
         $this->department->update([

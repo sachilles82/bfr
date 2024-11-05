@@ -18,13 +18,13 @@ $classes = Flux::classes()
     })
     ->add('shadow-sm border')
     ->add('bg-white dark:bg-white/10 dark:disabled:bg-white/[9%]')
-    ->add('text-zinc-700 dark:text-zinc-300')
+    ->add('text-gray-700 dark:text-gray-300')
     // Make the placeholder match the text color of standard input placeholders...
-    ->add('has-[option.placeholder:checked]:text-zinc-400 dark:has-[option.placeholder:checked]:text-zinc-400')
+    ->add('has-[option.placeholder:checked]:text-gray-400 dark:has-[option.placeholder:checked]:text-gray-400')
     ->add('disabled:shadow-none')
     ->add($invalid
         ? 'border border-red-500'
-        : 'border border-zinc-200 border-b-zinc-300/80 dark:border-white/10'
+        : 'border border-gray-300 dark:border-white/10'
     )
     ;
 @endphp

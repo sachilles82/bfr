@@ -1,7 +1,7 @@
 <ui-toast x-data x-on:toast-show.document="$el.showToast($event.detail)" wire:ignore>
     <template>
         <div popover="manual" class="m-0 ml-auto mt-auto pr-6 pb-6 bg-transparent">
-            <div class="p-2 rounded-xl shadow-sm bg-white border border-zinc-200 dark:bg-zinc-700 dark:border-zinc-600">
+            <div class="p-2 rounded-xl shadow-sm bg-white border border-zinc-200 dark:bg-gray-800 dark:border-zinc-600">
                 <div class="flex items-center gap-4">
                     <div class="flex-1 pl-3 py-2">
                         <div class="font-medium text-sm text-zinc-800 dark:text-white [&:not(:empty)+div]:font-normal [&:not(:empty)+div]:text-zinc-500 [&:not(:empty)+div]:dark:text-zinc-300 [&:not(:empty)]:pb-2"><slot name="heading"></slot></div>

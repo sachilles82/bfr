@@ -18,18 +18,4 @@ class DepartmentController extends Controller
 //        $this->authorize('show', $department);
         return view('laravel.hr.department.show', compact('department'));
     }
-
-    public function update(Request $request, Department $department)
-    {
-        $this->authorize('update', $department);
-
-        $data = $request->validate([
-            'name' => ['required'],
-            'current_team_id' => ['required'],
-        ]);
-
-        $department->update($data);
-
-        return $department;
-    }
 }

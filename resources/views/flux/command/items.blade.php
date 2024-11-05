@@ -2,7 +2,7 @@
 $classes = Flux::classes()
     ->add('p-[.3125rem]')
     ->add('overflow-y-auto')
-    ->add('bg-white dark:bg-zinc-700')
+    ->add('bg-white dark:bg-gray-800')
     ;
 @endphp
 
