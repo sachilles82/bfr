@@ -30,7 +30,7 @@ $classes = Flux::classes()
     ->add('w-full border rounded-md block disabled:shadow-none dark:shadow-none')
     ->add('appearance-none') // Without this, input[type="date"] on mobile doesn't respect w-full...
     ->add(match ($size) {
-        default => 'text-sm py-2 h-10 leading-[1.375rem]', // This makes the height of the input 40px (same as buttons and such...)
+        default => 'text-sm py-1.5 h-9 leading-6', // This makes the height of the input 40px (same as buttons and such...)
         'sm' => 'text-sm py-1.5 h-8 leading-[1.125rem]',
         'xs' => 'text-xs py-1.5 h-6 leading-[1.125rem]',
     })
@@ -41,15 +41,15 @@ $classes = Flux::classes()
         $hasTrailingIcon => 'pl-3 pr-10',
     })
     ->add(match ($variant) { // Background...
-        'outline' => 'bg-white dark:bg-white/10 dark:disabled:bg-white/[7%]',
-        'filled'  => 'bg-zinc-800/5 dark:bg-white/10 dark:disabled:bg-white/[7%]',
+        'outline' => 'bg-white dark:bg-white/5 dark:disabled:bg-white/[7%]',
+        'filled'  => 'bg-gray-800/5 dark:bg-white/5 dark:disabled:bg-white/[7%]',
     })
     ->add(match ($variant) { // Text color
-        'outline' => 'text-zinc-700 disabled:text-zinc-500 placeholder-zinc-400 disabled:placeholder-zinc-400/70 dark:text-zinc-300 dark:disabled:text-gray-400 dark:placeholder-zinc-400 dark:disabled:placeholder-zinc-500',
-        'filled'  => 'text-zinc-700 placeholder-zinc-500 disabled:placeholder-zinc-400 dark:text-zinc-200 dark:placeholder-white/60 dark:disabled:placeholder-white/40',
+        'outline' => 'text-gray-900 disabled:text-gray-500 placeholder-gray-400 disabled:placeholder-gray-400 dark:text-gray-300 dark:disabled:text-gray-400 dark:placeholder-gray-400 dark:disabled:placeholder-gray-500',
+        'filled'  => 'text-gray-900 placeholder-gray-500 disabled:placeholder-gray-400 dark:text-gray-300 dark:placeholder-white/60 dark:disabled:placeholder-white/40',
     })
     ->add(match ($variant) { // Border...
-        'outline' => $invalid ? 'border-red-400' : 'shadow-sm border-zinc-200 border-b-zinc-300/80 disabled:border-b-zinc-200 dark:border-white/10 dark:disabled:border-white/5',
+        'outline' => $invalid ? 'border-red-400' : 'block w-full border-0 dark:text-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500 dark:bg-white/5 dark:ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6',
         'filled'  => $invalid ? 'border-red-400' : 'border-0',
     })
     ;
