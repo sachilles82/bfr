@@ -14,7 +14,7 @@
                                 class="flex flex-col items-center justify-between py-0 md:py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                                 <div class="w-full md:w-1/2">
                                     <div class="flex items-center">
-                                        <div>
+                                        <div> <livewire:address.dropdown/>
                                             <h1 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
                                                 {{ __('Departments') }}
                                             </h1>

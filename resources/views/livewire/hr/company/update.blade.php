@@ -36,49 +36,6 @@
                         </flux:select>
                     </div>
 
-                    <div class="sm:col-span-4">
-                        <flux:fieldset>
-                            <flux:legend>Shipping address</flux:legend>
-
-                            <div class="space-y-6">
-                                <flux:input label="Street address line 1" placeholder="123 Main St" class="max-w-sm" />
-                                <flux:input label="Street address line 2" placeholder="Apartment, studio, or floor" class="max-w-sm" />
-
-                                <div class="grid grid-cols-2 gap-x-4 gap-y-6">
-                                    <flux:input label="City" placeholder="San Francisco" />
-                                    <flux:input label="State / Province" placeholder="CA" />
-                                    <flux:input label="Postal / Zip code" placeholder="12345" />
-                                    <flux:select label="Country">
-                                        <option selected>United States</option>
-                                        <!-- ... -->
-                                    </flux:select>
-                                </div>
-                            </div>
-                        </flux:fieldset>
-                    </div>
-                    <div class="sm:col-span-4">
-                        <flux:field>
-                            <flux:label>Username</flux:label>
-
-                            <flux:description>This will be publicly displayed.</flux:description>
-
-                            <flux:input />
-
-                            <flux:error name="username" />
-                        </flux:field>
-
-                        <flux:input.group>
-                            <flux:input placeholder="Post title" />
-
-                            <flux:button icon="plus">New post</flux:button>
-                        </flux:input.group>
-
-                        <flux:input icon="key" value="FLUX-1234-5678-ABCD-EFGH" readonly copyable />
-                        <flux:input type="email" label="Email" />
-                        <flux:input type="password" label="Password" />
-                        <flux:input type="date" max="2999-12-31" label="Date" />
-                    </div>
-
 
                     <div class="sm:col-span-4">
 {{--                        <x-datepicker.date-range-picker/>--}}
@@ -86,45 +43,8 @@
 {{--                        <x-datepicker.date-single-picker/>--}}
                     </div>
 
-                    <div class="sm:col-span-4">
-                        <flux:field>
-                            <flux:label>Website</flux:label>
-
-                            <flux:input.group>
-                                <flux:input placeholder="meinefirma" sm/>
-
-                                <flux:input.group.suffix>.reportix.ch</flux:input.group.suffix>
-                            </flux:input.group>
-
-                            <flux:error name="website"/>
-                        </flux:field>
-
-                        <flux:input wire:model="username" label="Username"
-                                    description="This will be publicly displayed."/>
-                        {{--                                                <label for="website"--}}
-                        {{--                                                       class="block text-sm/6 font-medium dark:text-white text-gray-900">Website</label>--}}
-                        {{--                                                <div class="mt-2">--}}
-                        {{--                                                    <div--}}
-                        {{--                                                        class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">--}}
-                        {{--                                                <span--}}
-                        {{--                                                    class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">http://</span>--}}
-                        {{--                                                        <input type="text" name="website" id="website"--}}
-                        {{--                                                               class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"--}}
-                        {{--                                                               placeholder="www.example.com">--}}
-                        {{--                                                    </div>--}}
-                        {{--                                                </div>--}}
-                    </div>
-
-
                     <div class="col-span-full">
-                        <label for="about"
-                               class="block text-sm/6 font-medium text-gray-900">About</label>
-                        <div class="mt-2">
-                                            <textarea id="about" name="about" rows="3"
-                                                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
-                        </div>
-                        <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about
-                            yourself.</p>
+                        <livewire:address.form/>
                     </div>
 
                     <div class="col-span-full">

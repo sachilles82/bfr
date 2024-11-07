@@ -30,7 +30,7 @@ $classes = Flux::classes()
     ->add('w-full border rounded-md block disabled:shadow-none dark:shadow-none')
     ->add('appearance-none') // Without this, input[type="date"] on mobile doesn't respect w-full...
     ->add(match ($size) {
-        default => 'text-sm py-1.5 h-9 leading-6', // This makes the height of the input 40px (same as buttons and such...)
+        default => 'sm:text-sm sm:leading-6 text-sm py-1.5 h-9 leading-6', // This makes the height of the input 40px (same as buttons and such...)
         'sm' => 'text-sm py-1.5 h-8 leading-[1.125rem]',
         'xs' => 'text-xs py-1.5 h-6 leading-[1.125rem]',
     })
@@ -49,7 +49,7 @@ $classes = Flux::classes()
         'filled'  => 'text-gray-900 placeholder-gray-500 disabled:placeholder-gray-400 dark:text-gray-300 dark:placeholder-white/60 dark:disabled:placeholder-white/40',
     })
     ->add(match ($variant) { // Border...
-        'outline' => $invalid ? 'border-red-400' : 'block w-full border-0 dark:text-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500 dark:bg-white/5 dark:ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6',
+        'outline' => $invalid ? 'border-red-400' : 'block w-full border-0 dark:text-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500 dark:bg-white/5 dark:ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600',
         'filled'  => $invalid ? 'border-red-400' : 'border-0',
     })
     ;

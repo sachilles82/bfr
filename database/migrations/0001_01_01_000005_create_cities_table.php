@@ -11,13 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('owner_id');
-            $table->foreignId('created_by');
+            $table->string('zip_city');
+            $table->foreignId('state_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('cities');
     }
 };
