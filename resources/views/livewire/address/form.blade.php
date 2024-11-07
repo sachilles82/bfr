@@ -325,15 +325,15 @@
             filteredStates() {
                 if (!this.selectedCountry) return [];
                 return this.searchState
-                    ? this.states.filter(state => state.country_id == this.selectedCountry.id && state.name.toLowerCase().includes(this.searchState.toLowerCase()))
-                    : this.states.filter(state => state.country_id == this.selectedCountry.id);
+                    ? this.states.filter(state => state.country_id === this.selectedCountry.id && state.name.toLowerCase().includes(this.searchState.toLowerCase()))
+                    : this.states.filter(state => state.country_id === this.selectedCountry.id);
             },
 
             filteredCities() {
                 if (!this.selectedState) return [];
                 return this.searchCity
-                    ? this.cities.filter(city => city.state_id == this.selectedState.id && city.zip_city.toLowerCase().includes(this.searchCity.toLowerCase()))
-                    : this.cities.filter(city => city.state_id == this.selectedState.id);
+                    ? this.cities.filter(city => city.state_id === this.selectedState.id && city.zip_city.toLowerCase().includes(this.searchCity.toLowerCase()))
+                    : this.cities.filter(city => city.state_id === this.selectedState.id);
             },
 
             selectCountry(country) {
