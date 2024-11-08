@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\BaseApp;
+namespace App\Policies\HR;
 
 use App\Models\HR\Department;
 use App\Models\User;

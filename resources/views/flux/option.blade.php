@@ -8,7 +8,7 @@
 $custom = $variant && $variant !== 'default';
 
 $classes = Flux::classes()
-    ->add('group/option data-[hidden]:hidden group flex items-center px-2 py-1.5 w-full focus:outline-none')
+    ->add('group/option data-[hidden]:hidden group flex items-center px-2 py-1.5 w-full focus:outline-none cursor-pointer')
     ->add('rounded-md')
     ->add('text-left text-sm font-medium')
     ->add('text-gray-800 data-[active]:bg-gray-100 [&[disabled]]:text-gray-400 dark:text-gray-400 data-[active]:dark:bg-gray-700/50 data-[active]:dark:text-gray-300 dark:[&[disabled]]:text-gray-400')

@@ -399,6 +399,6 @@
             <x-icon.calendar/>
         </div>
         <input type="text" x-ref="picker" readonly class="min-w-60 py-2.5 px-3 pl-12 block w-full text-sm font-medium
-        bg-white border-0 ring-1 ring-inset ring-gray-300 shadow-sm align-middle rounded-md hover:bg-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus:ring-indigo-500 dark:bg-gray-800/50 dark:text-gray-400 dark:ring-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+        bg-white border-0 ring-1 ring-inset ring-gray-300 shadow-sm align-middle rounded-md hover:bg-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus:ring-indigo-500 dark:bg-white/5 dark:text-gray-400 dark:ring-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
 </div>
 </div>

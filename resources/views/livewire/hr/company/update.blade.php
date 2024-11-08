@@ -1,8 +1,6 @@
 <!-- Settings forms -->
-<div class="space-y-10 divide-y divide-gray-900/10 dark:divide-white/5">
+<div class="divide-y divide-gray-900/10 dark:divide-white/5">
     <div class="grid max-w-8xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
-
-
         <div class="px-4 sm:px-0">
             <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Company Information')}}</h2>
             <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company information')}}</p>
@@ -35,12 +33,46 @@
                             <flux:option>Other</flux:option>
                         </flux:select>
                     </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-white">First name</label>
+                        <div class="mt-2">
+                            <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                                   class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm/6">
+                        </div>
+                    </div>
 
+                    <div class="sm:col-span-3">
+                        <label for="last-name" class="block text-sm/6 font-medium text-white">Last name</label>
+                        <div class="mt-2">
+                            <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                                   class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm/6">
+                        </div>
+                    </div>
+
+                    <div class="col-span-full">
+                        <flux:field>
+                            <flux:label badge="Required">Email</flux:label>
+
+                            <flux:input type="email" required/>
+
+                            <flux:error name="email"/>
+                        </flux:field>
+                    </div>
 
                     <div class="sm:col-span-4">
-{{--                        <x-datepicker.date-range-picker/>--}}
+                        <flux:field>
+                            <flux:label badge="Optional">Phone number</flux:label>
 
-{{--                        <x-datepicker.date-single-picker/>--}}
+                            <flux:input type="phone" placeholder="(+41) 44 492 70 73" mask="(+99) 99 999 99 99"/>
+
+                            <flux:description>Must be at least 8 characters long, include an uppercase letter, a number, and a special character.</flux:description>
+
+
+                            <flux:error name="phone"/>
+                        </flux:field>
+                                                <x-datepicker.date-range-picker/>
+
+{{--                                                <x-datepicker.date-single-picker/>--}}
                     </div>
 
                     <div class="col-span-full">
