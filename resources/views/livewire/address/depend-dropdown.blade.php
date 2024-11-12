@@ -72,8 +72,8 @@
                                     </div>
                                     <template x-for="country in filteredCountries()" :key="country.id">
                                         <div class="relative">
-                                            <div class="py-2 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                                 :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-50 text-gray-600': selectedCountryId === country.id, 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300': selectedCountryId !== country.id}"
+                                            <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                                 :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-50 text-gray-800': selectedCountryId === country.id, 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCountryId !== country.id}"
                                                  @click.prevent.stop="selectCountry(country)">
                                                             <span
                                                                 class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
@@ -86,7 +86,7 @@
                                                                           clip-rule="evenodd"/>
                                                                   </svg>
                                                             </span>
-                                                <div class="inline-flex items-center">
+                                                <div class="inline-flex items-center mt-1">
                                                     <img
                                                         class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400"
                                                         :src="'/flags/country-' + country.code.toLowerCase() + '.svg'"
@@ -97,11 +97,6 @@
                                         </div>
                                     </template>
                                 </div>
-                                <a href="#"
-                                   class="flex items-center p-3 text-sm font-medium text-indigo-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-indigo-500 hover:underline">
-                                    <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
-                                    {{ __('Add new Country') }}
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -164,8 +159,8 @@
 
                                 <template x-for="state in filteredStates()" :key="state.id">
                                     <div class="relative">
-                                        <div class="py-2 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                             :class="{'dark:bg-gray-700/50 dark:text-gray-600 bg-gray-50 text-gray-600': selectedStateId === state.id, 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300': selectedStateId !== state.id}"
+                                        <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                             :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-50 text-gray-800': selectedStateId === state.id, 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedStateId !== state.id}"
                                              @click.prevent.stop="selectState(state)">
                                 <span
                                     class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
@@ -176,7 +171,7 @@
                                               clip-rule="evenodd"/>
                                     </svg>
                                 </span>
-                                            <div class="inline-flex items-center">
+                                            <div class="inline-flex items-center mt-1">
                                                 <template x-if="state.code">
                                                     <img
                                                         class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400"
@@ -189,14 +184,19 @@
                                     </div>
                                 </template>
                             </div>
-{{--                            <livewire:address.state.create-state/>--}}
+                            <a href="#"
+                               class="flex items-center p-3 text-sm font-medium text-gray-700 border-t border-gray-200 rounded-b-md bg-gray-50 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700/50 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300 hover:underline">
+                                <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
+                                {{ __('Add new Zip & City') }}
+                            </a>
+                            {{--                            <livewire:address.state.create-state/>--}}
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="sm:col-span-3 sm:col-start-1">
-{{--                <x-form.inputs.street/>--}}
+                {{--                <x-form.inputs.street/>--}}
             </div>
 
             <div class="sm:col-span-3">
@@ -248,8 +248,8 @@
                                 </div>
                                 <template x-for="city in filteredCities()" :key="city.id">
                                     <div class="relative">
-                                        <div class="py-2 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                             :class="{'dark:bg-gray-700/50 dark:text-gray-600 bg-gray-50 text-gray-600': selectedCity === city.id, 'text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300': selectedCity !== city.id}"
+                                        <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                             :class="{'dark:bg-gray-700/50 dark:text-gray-600 bg-gray-50 text-gray-800': selectedCity === city.id, 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCity !== city.id}"
                                              @click.prevent.stop="selectCity(city)">
                                             <span x-text="city.zip_city"></span>
                                             <span
@@ -266,7 +266,7 @@
                                 </template>
                             </div>
                             <a href="#"
-                               class="flex items-center p-3 text-sm font-medium text-indigo-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-indigo-500 hover:underline">
+                               class="flex items-center p-3 text-sm font-medium text-gray-700 border-t border-gray-200 rounded-b-md bg-gray-50 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700/50 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300 hover:underline">
                                 <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
                                 {{ __('Add new Zip & City') }}
                             </a>

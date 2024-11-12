@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="col-span-full">
-                        <livewire:address.form/>
+                        <livewire:address.depend-dropdown/>
                     </div>
 
                     <div class="col-span-full">
