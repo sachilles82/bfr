@@ -9,6 +9,24 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <div class="mt-4">
+{{--                <x-label for="industry_id" value="{{ __('Industry') }}"/>--}}
+{{--                <select id="industry_id" name="industry_id" class="block mt-1 w-full" required>--}}
+{{--                    @foreach(\App\Models\HR\Industry::all() as $industry)--}}
+{{--                        <flux:option value="{{ $industry->id }}">{{ $industry->name }}</flux:option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+
+                <flux:select variant="combobox" searchablelabel="Industry" id="industry_id" name="industry_id" placeholder="Wähle Branche...">
+                    @foreach(\App\Models\HR\Industry::all() as $industry)
+                        <flux:option value="{{ $industry->id }}">{{ $industry->name }}</flux:option>
+                    @endforeach
+                </flux:select>
+
+                <livewire:hr.industry.dropdown/>
+
+            </div>
+
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
