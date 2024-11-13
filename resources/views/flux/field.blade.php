@@ -18,14 +18,14 @@ $classes = Flux::classes()
     })
     ->add(match ($variant) {
         default => [ // Adjust spacing around label...
-            '[&>[data-flux-label]]:mb-3 [&>[data-flux-label]:has(+[data-flux-description])]:mb-2',
+            '[&>[data-flux-label]]:mb-1 [&>[data-flux-label]:has(+[data-flux-description])]:mb-1',
         ],
         'inline' => '',
     })
     ->add(match ($variant) {
         default => [ // Adjust spacing around description...
             '[&>[data-flux-label]+[data-flux-description]]:mt-0',
-            '[&>[data-flux-label]+[data-flux-description]]:mb-3',
+            '[&>[data-flux-label]+[data-flux-description]]:mb-1',
             '[&>*:not([data-flux-label])+[data-flux-description]]:mt-3',
         ],
         'inline' => '',
