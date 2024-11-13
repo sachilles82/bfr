@@ -24,15 +24,17 @@
 
                     <div class="sm:col-span-4">
                         <flux:select variant="listbox" searchable placeholder="Wähle Branche...">
-                            <flux:option>Ariana Watson's Company</flux:option>
-                            <flux:option>Design services</flux:option>
-                            <flux:option>Web development</flux:option>
-                            <flux:option>Accounting</flux:option>
-                            <flux:option>Legal services</flux:option>
-                            <flux:option>Consulting</flux:option>
-                            <flux:option>Other</flux:option>
+                            @foreach(\App\Models\HR\Industry::all() as $industry)
+                                <flux:option value="{{ $industry->id }}">{{ $industry->name }}</flux:option>
+                            @endforeach
                         </flux:select>
                     </div>
+
+                    <flux:radio.group variant="segmented" label="Unternehmen">
+                        <flux:radio label="AG" />
+                        <flux:radio label="GmbH" />
+                        <flux:radio label="Einzelfirma" />
+                    </flux:radio.group>
                     <div class="sm:col-span-3">
                         <label for="first-name" class="block text-sm/6 font-medium text-white">First name</label>
                         <div class="mt-2">
