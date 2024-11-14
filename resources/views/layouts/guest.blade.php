@@ -10,9 +10,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Dark mode Helper-->
+{{--    <script src="{{ asset('js/darkmode-helper.js') }}"></script>--}}
 
     <!-- Styles -->
     @livewireStyles
@@ -22,6 +24,8 @@
 <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
     {{ $slot }}
 </div>
+
+@stack('modals')
 
 @livewireScripts
 <x-flux::toast/>
