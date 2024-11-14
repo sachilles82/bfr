@@ -11,8 +11,6 @@
         "laravel/jetstream": "^5.2",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "livewire/flux": "^1.0",
-        "livewire/flux-pro": "^1.0",
         "livewire/livewire": "^3.0",
         "spatie/laravel-permission": "^6.9",
         "spatie/laravel-ray": "^1.37"
@@ -76,11 +74,6 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "composer",
-            "url": "https://composer.fluxui.dev",
-            "name": "flux-pro"
         }
     ]
 }
