@@ -2,10 +2,12 @@
 
 namespace App\Models\HR;
 
+use App\Enums\Company\CompanyRegistrationType;
 use App\Enums\Company\CompanySize;
 use App\Enums\Company\CompanyType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
@@ -19,7 +21,7 @@ class Company extends Model
          * @var array<int, string>
          */
         protected $fillable = [
-            'name',
+            'company_name',
             'owner_id',
             'created_by',
             'industry_id',
@@ -30,7 +32,7 @@ class Company extends Model
             'email',
             'phone_1',
             'phone_2',
-            'form_type',
+            'registration_type',
             'is_active',
         ];
 
@@ -42,7 +44,26 @@ class Company extends Model
     protected $casts = [
         'company_type' => CompanyType::class,
         'company_size' => CompanySize::class,
+        'registration_type' => CompanyRegistrationType::class,
         'is_active' => 'boolean',
 
     ];
+
+
+    /** Zeigt zu welcher Branche die Company gehört */
+    public function industry(): BelongsTo
+    {
+        return $this->belongsTo(Industry::class);
+    }
+
+    /** Zusätzliche Validierung damit nur vorhandene Industry gespeichert werden können */
+    protected static function booted(): void
+    {
+        static::saving(function ($company) {
+            if (!Industry::where('id', $company->industry_id)->exists()) {
+                throw new \InvalidArgumentException('Invalid industry_id provided.');
+            }
+        });
+    }
+
 }

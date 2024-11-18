@@ -53,7 +53,7 @@
 @stack('modals')
 
 @livewireScripts
-<x-flux::toast/>
+<flux:toast position="top right" class="pt-24"/>
 @fluxScripts
 </body>
 </html>

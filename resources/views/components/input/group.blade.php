@@ -2,13 +2,26 @@
     'label',
     'error' => false,
     'helpText' => false,
-    'for'
+    'for',
+    'badge' => false,
+    'model' => '',
 ])
-<div class="col-span-2 mt-0">
+<div x-data="{ value: @entangle($model) }" class="col-span-2 mt-0">
     <div>
-        <label for="{{ $for}}" class="block text-sm font-medium leading-6 dark:text-white text-gray-900">
-            {{ $label}}
-        </label>
+        <div class="flex items-center">
+            <label for="{{ $for}}" class="block text-sm font-medium leading-6 dark:text-white text-gray-900">
+                {{ $label}}
+            </label>
+            <span
+                x-show="!value"
+                x-cloak
+                class="ml-2 inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-400/10 px-1.5 py-0.5 text-xs font-medium dark:text-gray-400 text-gray-600">
+{{--                                class="ml-2 inline-flex items-center rounded-md bg-red-100 dark:bg-red-400/10 px-1.5 py-0.5 text-xs font-medium dark:text-red-400 text-red-700">--}}
+
+                {{ $badge }}
+            </span>
+        </div>
+
 
         {{--    der Slot ist das input element--}}
         <div class="mt-0">

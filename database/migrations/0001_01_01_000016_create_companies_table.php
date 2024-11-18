@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('company_name');
             $table->foreignId('owner_id');
             $table->foreignId('created_by');
-            $table->foreignId('industry_id')->nullable()->constrained('industries');
+            $table->foreignId('industry_id')->constrained('industries');
             $table->string('company_url')->nullable()->unique();
             $table->enum('company_size', ['1-5', '6-10', '11-20', '21-50','51-100','101-200','>200',])->default('1-5');
             $table->enum('company_type', ['ag', 'einzelfirma'])->default('gmbh');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('phone_1')->nullable();
             $table->string('phone_2')->nullable();
-            $table->enum('form_type', ['Registerform', 'Adminform'])->default('Registerform');
+            $table->enum('registration_type', ['Registerform', 'Adminform'])->default('Registerform');
             $table->boolean('is_active')->default(false);
             $table->softDeletes();
             $table->timestamps();

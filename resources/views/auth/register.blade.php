@@ -4,19 +4,23 @@
             <x-authentication-card-logo/>
         </x-slot>
 
-        <x-validation-errors class="mb-4"/>
+{{--        <x-validation-errors class="mb-4"/>--}}
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="space-y-4">
-                <div>
-                    <flux:select label="{{ __('Branche') }}" variant="listbox" searchable
-                                 placeholder="Wähle Branche...">
+                <div x-data="{ selectedIndustry: null }">
+                    <flux:label badge="{{ __('Required') }}">{{ __('Branche') }}</flux:label>
+                    <flux:select variant="listbox" searchable placeholder="Wähle Branche..."
+                                 x-model="selectedIndustry">
                         @foreach(\App\Models\HR\Industry::all() as $industry)
                             <flux:option value="{{ $industry->id }}">{{ $industry->name }}</flux:option>
                         @endforeach
                     </flux:select>
+                    <input type="hidden" name="industry_id" :value="selectedIndustry">
+                    <flux:error name="industry_id"/>
                 </div>
+
 
 
                 <div x-data="{ selectedSize: '{{ \App\Enums\Company\CompanySize::OneToFive }}' }">
@@ -43,12 +47,8 @@
                     <input type="hidden" name="company_size" x-model="selectedSize">
                 </div>
 
-
-
-
-
                 <flux:field>
-                    <flux:label>{{ __('Meine App URL') }}</flux:label>
+                    <flux:label>{{ __('Company URL') }}</flux:label>
 
                     <flux:input.group>
                         <flux:input placeholder="meinefirma"/>
@@ -76,9 +76,9 @@
 
 
             <div class="mt-4">
-                <x-label for="name" value="{{ __('Firma') }}"/>
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
-                         autofocus autocomplete="name"/>
+                <x-label for="name" value="{{ __('Company Name') }}"/>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')" required
+                         autofocus autocomplete="company_name"/>
             </div>
 
             <div class="mt-4">
