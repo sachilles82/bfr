@@ -6,7 +6,7 @@
             <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company information')}}</p>
         </div>
 
-        <form wire:submit.prevent="updateCompany"
+        <form wire:submit="save"
               class="bg-white dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="px-4 py-6 sm:p-8 border-b dark:border-white/10 border-white">
                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -49,6 +49,7 @@
                             </flux:select>
                         </flux:field>
                     </div>
+
 
 
 
