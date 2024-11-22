@@ -30,7 +30,6 @@
                         </x-input.group>
                     </div>
 
-
                     <div class="sm:col-span-2">
                         <flux:field>
                             <flux:select
@@ -50,9 +49,6 @@
                         </flux:field>
                     </div>
 
-
-
-
                     <div class="sm:col-span-4">
                         <flux:select
                             wire:model="industry_id"
@@ -66,8 +62,6 @@
                             @endforeach
                         </flux:select>
                     </div>
-
-
 
                     <div class="sm:col-span-2">
                         <flux:field>
@@ -87,8 +81,6 @@
                             </flux:select>
                         </flux:field>
                     </div>
-
-
 
                     <div class="sm:col-span-3">
                         <x-input.group
@@ -127,7 +119,7 @@
                                     class="block w-full min-w-0 flex-1 shadow-sm rounded-none rounded-l-md dark:bg-white/5 border-0 py-1.5 text-gray-900 dark:text-white dark:focus-within:ring-inset dark:focus-within:ring-indigo-500 dark:ring-white/10 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="muster-gartenbau">
                                 <span
-                                    class="bg-gray-50 inline-flex items-center rounded-r-md border border-l-0 border-gray-300 dark:bg-white/10 dark:border-gray-700 px-3 text-gray-400 sm:text-sm sm:leading-6">
+                                    class="bg-gray-50 inline-flex items-center rounded-r-md border border-l-0 border-gray-300 dark:bg-white/10 dark:border-gray-700 px-3 dark:text-gray-400 text-gray-600 sm:text-sm sm:leading-6">
                                     .reportix.app
                                 </span>
                             </div>
@@ -153,7 +145,6 @@
                         </x-input.group>
                     </div>
 
-
                     <div class="sm:col-span-3">
                         <x-input.group
                             label="{{ __('Telefon 2') }}"
@@ -169,6 +160,24 @@
                                 name="phone_2"
                                 id="phone_2"
                                 placeholder="{{ __('+41 76 699 23 24') }}"
+                            />
+                        </x-input.group>
+                    </div>
+
+                    <div class="sm:col-span-4">
+                        <x-input.group
+                            label="{{ __('Main Email') }}"
+                            for="email"
+                            badge="{{ __('* Required') }}"
+                            :error="$errors->first('email')"
+                            help-text="{{ __('') }}"
+                            model="email"
+                        >
+                            <x-input.text
+                                wire:model="email"
+                                name="email"
+                                id="email"
+                                placeholder="{{ __('info@meinefirma.ch') }}"
                             />
                         </x-input.group>
                     </div>

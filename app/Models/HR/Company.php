@@ -5,9 +5,11 @@ namespace App\Models\HR;
 use App\Enums\Company\CompanyRegistrationType;
 use App\Enums\Company\CompanySize;
 use App\Enums\Company\CompanyType;
+use App\Models\Address\Address;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
@@ -64,6 +66,12 @@ class Company extends Model
                 throw new \InvalidArgumentException('Invalid industry_id provided.');
             }
         });
+    }
+
+    /** Das ist eine MorphOne Realation. Die Company hat eine Adresse */
+    public function address():MorphOne
+    {
+        return $this->morphOne(Address::class, 'addressable');
     }
 
 }

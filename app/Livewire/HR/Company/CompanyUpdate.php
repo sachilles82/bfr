@@ -2,6 +2,7 @@
 
 namespace App\Livewire\HR\Company;
 
+use App\Livewire\HR\Company\Helper\ValidateCompany;
 use App\Models\HR\Company;
 use Flux\Flux;
 use Illuminate\View\View;
@@ -9,6 +10,8 @@ use Livewire\Component;
 
 class CompanyUpdate extends Component
 {
+    use ValidateCompany;
+
     public Company $company;
     public $company_name = '';
     public $industry_id = '';
@@ -24,33 +27,33 @@ class CompanyUpdate extends Component
     {
         $this->company_name = $this->company->company_name;
         $this->industry_id = $this->company->industry_id;
-        $this->company_size = $this->company->company_size;
-        $this->company_type = $this->company->company_type;
+        $this->company_size = $this->company->company_size->value;
+        $this->company_type = $this->company->company_type->value;
         $this->email = $this->company->email;
         $this->phone_1 = $this->company->phone_1;
         $this->phone_2 = $this->company->phone_2;
         $this->register_number = $this->company->register_number;
         $this->company_url = $this->company->company_url;
-
     }
 
     public function save(): void
     {
+        $this->validate();
         $this->company->update([
             'company_name' => $this->company_name,
             'industry_id' => $this->industry_id,
             'company_size' => $this->company_size,
             'company_type' => $this->company_type,
+            'company_url' => $this->company_url,
             'email' => $this->email,
             'phone_1' => $this->phone_1,
             'phone_2' => $this->phone_2,
             'register_number' => $this->register_number,
         ]);
-
         Flux::toast(
-            variant: 'success',
-            heading: 'Changes saved.',
             text: 'You can always update this in your settings.',
+            heading: 'Changes saved.',
+            variant: 'success',
         );
     }
 

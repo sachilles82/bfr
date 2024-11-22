@@ -52,8 +52,9 @@
 </div>
 @stack('modals')
 
-@livewireScripts
+
 <flux:toast position="top right" class="pt-24"/>
 @fluxScripts
+@livewireScripts
 </body>
 </html>
