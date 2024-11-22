@@ -42,15 +42,14 @@ class AddressForm extends Component
             $this->country_id = $address->country_id ?? '';
             $this->state_id = $address->state_id ?? '';
             $this->city_id = $address->city_id ?? '';
-
-            // Namen für State und City
-            $this->state_name = optional($address->state)->name ?? '';
-            $this->city_name = optional($address->city)->zip_city ?? '';
         }
     }
 
     public function save(): void
     {
+
+//        dd($this->country_id, $this->state_id, $this->city_id);
+
 //        $this->validate([
 //            'street_number' => 'required|string|max:255',
 //            'country_id' => 'required|exists:countries,id',
