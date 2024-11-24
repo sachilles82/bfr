@@ -97,6 +97,7 @@
                 this.filteredStates = this.states.filter(state => state.country_id == this.selectedCountryId);
                 if (!this.filteredStates.some(state => state.id == this.selectedStateId)) {
                     this.selectedStateId = null;
+                    this.selectedCityId = null;
                 }
             },
 
