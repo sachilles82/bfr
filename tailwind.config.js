@@ -12,6 +12,7 @@ export default {
         './resources/views/**/*.blade.php',
         './vendor/livewire/flux-pro/stubs/**/*.blade.php',
         './vendor/livewire/flux/stubs/**/*.blade.php',
+        'node_modules/preline/dist/*.js',
     ],
 
     theme: {
@@ -22,5 +23,9 @@ export default {
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms, typography,
+        require('preline/plugin')
+    ],
+
 };

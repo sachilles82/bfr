@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('zip_city');
+            $table->string('name');
             $table->foreignId('state_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->nullOnDelete();
             $table->softDeletes();

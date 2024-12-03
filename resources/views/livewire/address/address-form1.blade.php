@@ -113,9 +113,9 @@
                                     </div>
                                 </div>
 
-                                <input type="text" wire:model.defer="country_id">
-                                <input type="text" wire:model.defer="state_id">
-                                <input type="text" wire:model.defer="city_id">
+{{--                                <input type="text" wire:model.defer="country_id">--}}
+{{--                                <input type="text" wire:model.defer="state_id">--}}
+{{--                                <input type="text" wire:model.defer="city_id">--}}
 
 
                             </div>
@@ -132,9 +132,9 @@
                                     <span
                                         x-show="!selectedStateId"
                                         x-cloak
-                                        class="ml-2 inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-400/10 px-1.5 py-0.5 text-xs font-medium dark:text-gray-400 text-gray-600">
-                        {{ __('* Required') }}
-                    </span>
+                                                        class="ml-2 inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-400/10 px-1.5 py-0.5 text-xs font-medium dark:text-gray-400 text-gray-600">
+                                        {{ __('* Required') }}
+                                    </span>
                                 </div>
                                 <div autofocus
                                      class="mt-2 block w-min-[200px] relative content-center w-full py-1.5 text-left bg-white dark:bg-white/5 border-0 rounded-l-none ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500"
@@ -192,15 +192,15 @@
                                                     <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
                                                          :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedStateId === state.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedStateId !== state.id}"
                                                          @click.prevent.stop="selectState(state)">
-                                <span
-                                    class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
-                                    <svg :class="{'w-4 h-4': selectedStateId === state.id}"
-                                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"/>
-                                    </svg>
-                                </span>
+                                                        <span
+                                                            class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
+                                                            <svg :class="{'w-4 h-4': selectedStateId === state.id}"
+                                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                <path fill-rule="evenodd"
+                                                                      d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                                                      clip-rule="evenodd"/>
+                                                            </svg>
+                                                        </span>
                                                         <div class="inline-flex items-center mt-1">
                                                             <template x-if="state.code">
                                                                 <img
@@ -217,9 +217,8 @@
                                         <a href="#"
                                            class="flex items-center p-3 text-sm font-medium text-gray-700 border-t border-gray-200 rounded-b-md bg-gray-50 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700/50 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300 hover:underline">
                                             <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
-                                            {{ __('Add new Zip & City') }}
+                                            {{ __('Add new State') }}
                                         </a>
-                                        {{--                            <livewire:address.state.create-state/>--}}
                                     </div>
                                 </div>
                             </div>
@@ -363,20 +362,26 @@
         const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
         return {
-            countries: @json($countries),
+
             states: @json($states),
+            selectedStateId: @json($state_id),
+            selectedState: null,
+            selectedStateName: '',
+            searchState: '',
+            openStateDropdown: false,
+
+
+
+
+            countries: @json($countries),
             cities: @json($cities),
             selectedCountryId: @entangle('country_id') ? @entangle('country_id') : null,
-            selectedStateId: @entangle('state_id') ? @entangle('state_id') : null,
             selectedCityId: @entangle('city_id') ? @entangle('city_id') : null,
-            selectedStateName:'',
             selectedCityName: '',
 
             selectedCountry: null,
-            selectedState: '',
             selectedCity:'',
             searchCountry: '',
-            searchState: '',
             searchCity: '',
             openCountry: false,
             openState: false,
