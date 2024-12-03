@@ -316,7 +316,6 @@
                 this.openCountryDropdown = false;
                 this.searchCountry = '';
 
-                // Aktualisiere das verbundene Livewire-Modell durch versteckten Input
                 if (this.$refs.countryIdInput._x_model) {
                     this.$refs.countryIdInput._x_model.set(country.id);
                 }

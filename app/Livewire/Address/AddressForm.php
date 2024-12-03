@@ -28,7 +28,6 @@ class AddressForm extends Component
     {
         $this->addressable = $addressable;
 
-        // Daten aus der Datenbank laden
         $this->countries = Country::select('id', 'name', 'code')->get();
         $this->states = State::select('id', 'name', 'code', 'country_id')->get();
         $this->cities = City::select('id', 'name', 'state_id')->get();
@@ -44,8 +43,6 @@ class AddressForm extends Component
 
     public function save(): void
     {
-
-//        dd($this->state_id, $this->country_id);
 
         $this->validate([
             'street_number' => 'required|string|max:255',
@@ -66,6 +63,7 @@ class AddressForm extends Component
             heading: 'Success',
             variant: 'success'
         );
+        $this->dispatch('$refresh');
     }
 
 
