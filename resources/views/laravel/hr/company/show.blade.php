@@ -66,7 +66,9 @@
 {{--                <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">--}}
             <div class="space-y-10 divide-y dark:divide-white/5 divide-gray-900/10">
 
-                <livewire:address.address-form :addressable="$company" />
+                <livewire:hr.company.company-update
+                    :company="$company"
+                />
                 <livewire:address.address-form :addressable="$company" />
 
 

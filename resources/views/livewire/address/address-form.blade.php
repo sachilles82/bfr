@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3 max-w-8xl p-12">
+<div class="grid max-w-8xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
     <div class="px-4 sm:px-0">
-        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Company Information')}}</h2>
+        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Company Address Information')}}</h2>
         <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company information')}}</p>
     </div>
 
@@ -98,7 +98,7 @@
                                                             <img
                                                                 :src="'/flags/country-' + country.code.toLowerCase() + '.svg'"
                                                                 alt="Flag"
-                                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
+                                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/90 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
                                                         </template>
                                                         <span class="ml-2" x-text="country.name"></span>
                                                     </div>
@@ -106,11 +106,6 @@
                                             </div>
                                         </template>
                                     </div>
-                                    <a href="#"
-                                       class="flex items-center p-3 text-sm font-medium text-indigo-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-indigo-500 hover:underline">
-                                        <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
-                                        {{ __('Add new Country') }}
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -197,6 +192,10 @@
                                         </div>
                                     </template>
                                 </div>
+                                <flux:button icon="plus"
+                                             class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
+                                             variant="filled">{{ __('Add new State') }}</flux:button>
+
                                 {{--                            <livewire:address.state.create-state/>--}}
                             </div>
                         </div>
@@ -288,12 +287,14 @@
                                         </div>
                                     </template>
                                 </div>
-                                <a href="#"
-                                   class="flex items-center p-3 text-sm font-medium text-indigo-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-indigo-500 hover:underline">
-                                    <x-icon.plus class="w-4 h-4 -ml-1 mr-2"/>
-                                    {{ __('Add new Zip & City') }}
-                                </a>
-                            </div>
+
+                                <flux:modal.trigger name="edit-profile">
+                                    <flux:button icon="plus"
+                                                 class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
+                                                 variant="filled">{{ __('Add new Zip & City') }}</flux:button>
+
+                                </flux:modal.trigger>
+                                 </div>
                         </div>
                     </div>
                 </div>
@@ -305,13 +306,30 @@
 
             </div>
         </div>
-        <div
-            class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 dark:border-white/5 px-4 py-4 sm:px-8">
-            <x-button.save>
-                {{ __('Update')}}
-            </x-button.save>
-        </div>
+        <!-- Address Information End-->
+
+        <!-- Update Button -->
+        <x-button.update>
+            {{ __('Update')}}
+        </x-button.update>
+
     </form>
+    <flux:modal name="edit-profile" variant="flyout" class="space-y-6">
+        <div>
+            <flux:heading size="lg">Update profile</flux:heading>
+            <flux:subheading>Make changes to your personal details.</flux:subheading>
+        </div>
+
+        <flux:input label="Name" placeholder="Your name" />
+
+        <flux:input label="Date of birth" type="date" />
+
+        <div class="flex">
+            <flux:spacer />
+
+            <flux:button type="submit" variant="primary">Save changes</flux:button>
+        </div>
+    </flux:modal>
 </div>
 
 <script>

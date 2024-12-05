@@ -53,7 +53,7 @@
             'filled' => 'bg-gray-800/5 hover:bg-gray-800/10 dark:bg-white/10 dark:hover:bg-white/20',
             'outline' => 'bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600/75',
             'danger' => 'bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-500',
-            'ghost' => 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800',
+            'ghost' => 'bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800',
             'subtle' => 'bg-transparent hover:bg-gray-800/5 dark:hover:bg-white/15',
         })
         ->add(match ($variant) { // Text color...
