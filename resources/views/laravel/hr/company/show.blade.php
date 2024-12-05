@@ -48,19 +48,30 @@
 {{--                :company="$company"--}}
 {{--            />--}}
 
-            <div class="space-y-10 border-t border-gray-900/10 dark:border-white/5">
-                <div class="grid max-w-8xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+{{--            <div class="space-y-10 border-t border-gray-900/10 dark:border-white/5">--}}
+{{--                <div class="grid max-w-8xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">--}}
 
-                    <div class="px-4 sm:px-0">
-                        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Comapany Information')}}</h2>
-                        <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company informations')}}</p>
-                    </div>
+{{--                    <div class="px-4 sm:px-0">--}}
+{{--                        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Comapany Information')}}</h2>--}}
+{{--                        <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company informations')}}</p>--}}
+{{--                    </div>--}}
 
-                    <livewire:address.address-form :addressable="$company" />
+{{--                    <livewire:address.address-form :addressable="$company" />--}}
 
 
-                </div>
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="space-y-10 divide-y divide-gray-900/10 p-12">--}}
+{{--                <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">--}}
+            <div class="space-y-10 divide-y dark:divide-white/5 divide-gray-900/10">
+
+                <livewire:address.address-form :addressable="$company" />
+                <livewire:address.address-form :addressable="$company" />
+
+
             </div>
+
         </div>
     </div>
 

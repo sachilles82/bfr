@@ -1,16 +1,21 @@
-<form wire:submit.prevent="save">
-    <div x-data="countryDropdown()" x-init="init()">
-        <div class="border-b border-gray-900/10 dark:border-white/10 pb-8">
-            <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-5 flex">
+<div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3 max-w-8xl p-12">
+    <div class="px-4 sm:px-0">
+        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Company Information')}}</h2>
+        <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company information')}}</p>
+    </div>
+
+    <form wire:submit.prevent="save"
+          class="bg-white dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+        <div x-data="addressInputs()" x-init="init()" class="px-4 py-6 sm:p-8">
+            <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="sm:col-span-6 md:col-span-5 flex">
                     <div class="mt-4">
                         <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700" for="country">
                             {{ __('Country') }}
                         </label>
                         <div class="relative mt-2">
                             <div
-                                class="cursor-pointer flex-shrink-0 z-10 inline-flex min-w-[120px] items-center py-1.5 text-left px-2 text-sm font-medium sm:text-sm sm:leading-5 text-gray-500 bg-gray-100 border-0 border-gray-300 rounded-s-lg dark:bg-white/5 ring-1 ring-inset ring-gray-300 dark:ring-white/10"
-                                :class="{'focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500': openCountryDropdown}"
+                                class="cursor-pointer flex-shrink-0 z-10 inline-flex min-w-[140px] items-center py-1 text-left px-2 text-sm font-medium sm:text-sm sm:leading-5 text-gray-500 bg-gray-100 border-0 border-gray-300 rounded-s-lg dark:bg-white/5 ring-1 ring-inset ring-gray-300 dark:ring-white/10"
                                 @click.prevent="toggleSelectCountry"
                                 @click.away="closeSelectCountry"
                                 @keydown.escape="closeSelectCountry"
@@ -42,7 +47,7 @@
 
                                 <div class="flex flex-wrap" x-cloak x-show="selectedCountry">
                                     <div
-                                        class="text-gray-800 dark:text-gray-400 truncate px-2 py-0.5 my-0.5 flex items-center">
+                                        class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
                                         <img
                                             :src="selectedCountry ? '/flags/country-' + selectedCountry.code.toLowerCase() + '.svg' : ''"
                                             class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
@@ -112,14 +117,12 @@
                     </div>
                     <!-- Country Dropdown End-->
 
-
                     <div class="mt-4 relative w-full">
                         <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700" for="state">
                             {{ __('State') }}
                         </label>
                         <div autofocus
-                             class="mt-2 block w-min-[200px] relative content-center w-full py-1.5 text-left bg-white dark:bg-white/5 border-0 rounded-l-none ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500"
-                             :class="{'focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500': openStateDropdown}"
+                             class="mt-2 block w-min-[200px] relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 rounded-l-none ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
                              @click.prevent="toggleSelectState"
                              @click.away="closeSelectState"
                              @keydown.escape="closeSelectState"
@@ -130,7 +133,7 @@
                             </div>
                             <div class="ml-2 flex flex-wrap cursor-pointer" x-cloak x-show="selectedState">
                                 <div
-                                    class="text-gray-800 dark:text-gray-400 truncate px-2 py-0.5 my-0.5 flex items-center">
+                                    class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
 
                                     <template x-if="selectedState && selectedState.code">
                                         <img :src="'/flags/state/' + selectedState.code.toLowerCase() + '.svg'"
@@ -200,12 +203,22 @@
                     </div>
                 </div>
 
-                <div class="sm:col-span-3 sm:col-start-1">
-                    <x-input.text-1
-                        wire:model="street_number"
-                        name="street_number"
-                        id="street_number"
-                        placeholder="{{ __('Street & Number') }}"/>
+                <div class="sm:col-span-3">
+                    <x-input.group
+                        label="{{ __('Street + Number') }}"
+                        for="street_number"
+                        badge="{{ __('* Required') }}"
+                        :error="$errors->first('street_number')"
+                        help-text="{{ __('') }}"
+                        model="street_number"
+                    >
+                        <x-input.text
+                            wire:model="street_number"
+                            name="street_number"
+                            id="street_number"
+                            placeholder="{{ __('Musterstrasse 25') }}"
+                        />
+                    </x-input.group>
                 </div>
 
                 <div class="sm:col-span-3">
@@ -215,8 +228,7 @@
                     </label>
                     <div class="relative mt-2">
                         <div
-                            class="block relative content-center w-full py-1.5 text-left bg-white dark:bg-white/5 border-0 ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5 focus:ring-2 focus-within:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500"
-                            :class="{'focus:ring-2 focus-within:ring-inset focus:ring-indigo-600 dark:focus-within:ring-inset dark:focus-within:ring-indigo-500': openCityDropdown}"
+                            class="block relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
                             @click.prevent="toggleSelectCity"
                             @click.away="closeSelectCity"
                             @keydown.escape="closeSelectCity"
@@ -226,7 +238,7 @@
                             </div>
                             <div class="flex flex-wrap" x-cloak x-show="selectedCity">
                                 <div
-                                    class="text-gray-800 dark:text-gray-400 truncate px-2 py-0.5 my-0.5 flex items-center">
+                                    class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
 
                                     <div class="px-2 truncate" x-text="selectedCityName"></div>
 
@@ -285,28 +297,25 @@
                         </div>
                     </div>
                 </div>
+
+                <input type="hidden" wire:model="country_id" x-ref="countryIdInput">
+                <input type="hidden" wire:model="state_id" x-ref="stateIdInput">
+                <input type="hidden" wire:model="city_id" x-ref="cityIdInput">
+
+
             </div>
         </div>
-
-
-        <input type="hidden" wire:model="country_id" x-ref="countryIdInput">
-        <input type="hidden" wire:model="state_id" x-ref="stateIdInput">
-        <input type="hidden" wire:model="city_id" x-ref="cityIdInput">
-
-
-        <div class="flex items-center justify-end gap-x-1 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-            <x-button.back wire:navigate.hover href="{{ route('settings.departments') }}">
-                {{ __('Back')}}
-            </x-button.back>
+        <div
+            class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 dark:border-white/5 px-4 py-4 sm:px-8">
             <x-button.save>
                 {{ __('Update')}}
             </x-button.save>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
 <script>
-    function countryDropdown() {
+    function addressInputs() {
         return {
             countries: @json($countries),
             selectedCountryId: @json($country_id),
@@ -462,6 +471,6 @@
     }
 
     document.addEventListener('alpine:init', () => {
-        Alpine.data('countryDropdown', countryDropdown);
+        Alpine.data('addressInputs', addressInputs);
     });
 </script>
