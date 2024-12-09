@@ -16,6 +16,8 @@ class DepartmentController extends Controller
     public function show(Department $department)
     {
 //        $this->authorize('show', $department);
-        return view('laravel.hr.department.show', compact('department'));
+        return view('laravel.hr.department.show',
+            compact('department')
+        );
     }
 }

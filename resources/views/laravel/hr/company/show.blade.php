@@ -7,41 +7,41 @@
 
         <div class="flex-1 overflow-y-auto">
 
-{{--            <header>--}}
-{{--                <!-- Secondary navigation -->--}}
-{{--                <nav class="flex overflow-x-auto border-b dark:border-white/5 border-gray-200 py-4">--}}
-{{--                    <ul role="list"--}}
-{{--                        class="flex min-w-full flex-none gap-x-6 px-4 text-sm font-semibold leading-6 dark:text-gray-400 text-gray-500 sm:px-6 lg:px-8">--}}
+            <header>
+                <!-- Secondary navigation -->
+                <nav class="flex overflow-x-auto border-b dark:border-white/5 border-gray-200 py-4">
+                    <ul role="list"
+                        class="flex min-w-full flex-none gap-x-6 px-4 text-sm font-semibold leading-6 dark:text-gray-400 text-gray-500 sm:px-6 lg:px-8">
 
-{{--                        --}}{{--                            <li>--}}
-{{--                        --}}{{--                                <a wire:navigate.hover--}}
-{{--                        --}}{{--                                   href="{{ route('permission.auth', $user) }}"--}}
-{{--                        --}}{{--                                   class="{{ request()->routeIs('permission.auth') ? 'dark:text-indigo-400 text-indigo-600' : 'hover:text-indigo-600 dark:hover:text-indigo-400' }}">--}}
-{{--                        --}}{{--                                    {{ __('Authorization')}}</a>--}}
-{{--                        --}}{{--                            </li>--}}
-{{--                        --}}{{--                            <li>--}}
-{{--                        --}}{{--                                <a wire:navigate.hover--}}
-{{--                        --}}{{--                                   href="{{ route('permission.report', $user) }}"--}}
-{{--                        --}}{{--                                   class="{{ request()->routeIs('permission.report') ? 'dark:text-indigo-400 text-indigo-600' : 'hover:text-indigo-600 dark:hover:text-indigo-400' }}">--}}
-{{--                        --}}{{--                                    {{ __('Report')}}</a>--}}
-{{--                        --}}{{--                            </li>--}}
+{{--                                                    <li>--}}
+{{--                                                        <a wire:navigate.hover--}}
+{{--                                                           href="{{ route('permission.auth', $user) }}"--}}
+{{--                                                           class="{{ request()->routeIs('permission.auth') ? 'dark:text-indigo-400 text-indigo-600' : 'hover:text-indigo-600 dark:hover:text-indigo-400' }}">--}}
+{{--                                                            {{ __('Authorization')}}</a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li>--}}
+{{--                                                        <a wire:navigate.hover--}}
+{{--                                                           href="{{ route('permission.report', $user) }}"--}}
+{{--                                                           class="{{ request()->routeIs('permission.report') ? 'dark:text-indigo-400 text-indigo-600' : 'hover:text-indigo-600 dark:hover:text-indigo-400' }}">--}}
+{{--                                                            {{ __('Report')}}</a>--}}
+{{--                                                    </li>--}}
 
-{{--                        <li>--}}
-{{--                            <a href="#"--}}
-{{--                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Overview')}}</a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#"--}}
-{{--                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Activity')}}</a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#"--}}
-{{--                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Settings')}}</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </nav>--}}
+                        <li>
+                            <a href="#"
+                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Overview')}}</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Activity')}}</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               class="hover:text-indigo-600 dark:hover:text-indigo-400">{{ __('Settings')}}</a>
+                        </li>
+                    </ul>
+                </nav>
 
-{{--            </header>--}}
+            </header>
 
 
 {{--            <livewire:hr.company.company-update--}}

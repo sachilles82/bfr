@@ -23,10 +23,10 @@
                 <!-- Dark Mode Icons -->
                 <div class="flex items-center gap-x-2 lg:gap-x-3">
                     <!-- Darkmode Toggler -->
-                    <flux:button variant="ghost" x-on:click="darkMode = !darkMode">
-                        <flux:icon name="sun" x-show="darkMode" class="w-6 h-6" />
-                        <flux:icon name="moon" x-show="! darkMode" class="w-6 h-6" />
-                    </flux:button>
+{{--                    <flux:button variant="ghost" x-on:click="darkMode = !darkMode">--}}
+{{--                        <flux:icon name="sun" x-show="darkMode" class="w-6 h-6" />--}}
+{{--                        <flux:icon name="moon" x-show="! darkMode" class="w-6 h-6" />--}}
+{{--                    </flux:button>--}}
                     <flux:separator vertical class="my-2" />
 {{--                    <!-- Separator -->--}}
 {{--                    <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 dark:lg:bg-white/10"--}}
@@ -42,6 +42,16 @@
                                   d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                         </svg>
                     </button>
+
+{{--                    <flux:button variant="ghost">--}}
+{{--                        <flux:icon name="" class="w-6 h-6" />--}}
+{{--                        --}}{{--                        <span class="sr-only">View notifications</span>--}}
+{{--                        --}}{{--                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"--}}
+{{--                        --}}{{--                             stroke="currentColor" aria-hidden="true">--}}
+{{--                        --}}{{--                            <path stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                        --}}{{--                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>--}}
+{{--                        --}}{{--                        </svg>--}}
+{{--                    </flux:button>--}}
 
                     <!-- Separator -->
                     <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 dark:lg:bg-white/10"
