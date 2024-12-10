@@ -15,6 +15,7 @@ use Livewire\Component;
 class AddressForm extends Component
 {
     public Model $addressable;
+
     public Collection $countries;
     public Collection $states;
     public Collection $cities;
@@ -26,19 +27,25 @@ class AddressForm extends Component
 
     public function mount(Model $addressable): void
     {
-        $this->addressable = $addressable;
+        $this->setAddress($addressable);
 
         $this->countries = Country::select('id', 'name', 'code')->get();
         $this->states = State::select('id', 'name', 'code', 'country_id')->get();
         $this->cities = City::select('id', 'name', 'state_id')->get();
+    }
 
-        // Vorhandene Adresse initialisieren
+    public function setAddress(Model $addressable): void
+    {
+
+        $this->addressable = $addressable;
+
         if ($address = $this->addressable->address) {
             $this->street_number = $address->street_number ?? '';
             $this->country_id = $address->country_id ?? '';
             $this->state_id = $address->state_id ?? '';
             $this->city_id = $address->city_id ?? '';
         }
+
     }
 
     public function save(): void
@@ -51,19 +58,21 @@ class AddressForm extends Component
             'city_id' => 'required|exists:cities,id',
         ]);
 
-        $this->addressable->address()->updateOrCreate([], [
+        $this->addressable->address()->update([
             'street_number' => $this->street_number,
             'country_id' => $this->country_id,
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
         ]);
 
+//        $this->redirect('company', navigate: true);
+        $this->dispatch('$refresh');
+
         Flux::toast(
             text: 'Address updated successfully.',
             heading: 'Success',
             variant: 'success'
         );
-        $this->dispatch('$refresh');
     }
 
 

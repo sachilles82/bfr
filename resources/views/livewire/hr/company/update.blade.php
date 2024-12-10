@@ -186,7 +186,7 @@
                 </div>
             </div>
             <!-- Update Button -->
-            <x-button.update>
+            <x-button.update wire:click="refreshCompanyData">
                 {{ __('Update')}}
             </x-button.update>
         </form>

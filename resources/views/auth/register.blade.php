@@ -10,8 +10,8 @@
             @csrf
             <div class="space-y-4">
                 <div x-data="{ selectedIndustry: null }">
-                    <flux:label badge="{{ __('Required') }}">{{ __('Branche') }}</flux:label>
-                    <flux:select variant="listbox" searchable placeholder="Wähle Branche..."
+                    <flux:label badge="{{ __('Required') }}">{{ __('Industry') }}</flux:label>
+                    <flux:select variant="listbox" searchable placeholder="{{ __('Choose a Industry') }}"
                                  x-model="selectedIndustry">
                         @foreach(\App\Models\HR\Industry::all() as $industry)
                             <flux:option value="{{ $industry->id }}">{{ $industry->name }}</flux:option>

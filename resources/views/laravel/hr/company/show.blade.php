@@ -69,8 +69,10 @@
                 <livewire:hr.company.company-update
                     :company="$company"
                 />
-                <livewire:address.address-form :addressable="$company" />
 
+                <livewire:address.address-form
+                    :addressable="$company"
+                />
 
             </div>
 

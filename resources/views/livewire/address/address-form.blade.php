@@ -88,9 +88,7 @@
                                                 <div class="relative">
                                                     <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
                                                          :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCountryId === country.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCountryId !== country.id}"
-                                                         @click.prevent.stop="selectCountry(country)"
-                                                         @mouseenter="highlightIndex = index"
-                                                         :class="{'bg-gray-100': highlightIndex === index}">
+                                                         @click.prevent.stop="selectCountry(country)">
                                         <span
                                             class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
                                             <svg x-show="selectedCountryId === country.id" class="w-4 h-4"
@@ -176,8 +174,7 @@
                                                 <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
                                                      :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedStateId === state.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedStateId !== state.id}"
                                                      @click.prevent.stop="selectState(state)"
-                                                     @mouseenter="highlightIndex = index"
-                                                     :class="{'bg-gray-100': highlightIndex === index}">
+                                                >
                                                 <span
                                                     class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
                                                     <svg x-show="selectedStateId === state.id" class="w-4 h-4"
@@ -288,8 +285,7 @@
                                                 <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
                                                      :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCityId === city.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCityId !== city.id}"
                                                      @click.prevent.stop="selectCity(city)"
-                                                     @mouseenter="highlightIndex = index"
-                                                     :class="{'bg-gray-100': highlightIndex === index}">
+                                                >
                                                     <span class="ml-2" x-text="city.name"></span>
                                                 </div>
                                             </div>

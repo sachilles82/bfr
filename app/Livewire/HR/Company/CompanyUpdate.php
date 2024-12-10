@@ -13,6 +13,7 @@ class CompanyUpdate extends Component
     use ValidateCompany;
 
     public Company $company;
+
     public $company_name = '';
     public $industry_id = '';
     public $company_size = '';
@@ -23,22 +24,31 @@ class CompanyUpdate extends Component
     public $register_number = '';
     public $company_url = '';
 
-    public function mount(): void
+    public function mount(Company $company): void
     {
-        $this->company_name = $this->company->company_name;
-        $this->industry_id = $this->company->industry_id;
-        $this->company_size = $this->company->company_size->value;
-        $this->company_type = $this->company->company_type->value;
-        $this->email = $this->company->email;
-        $this->phone_1 = $this->company->phone_1;
-        $this->phone_2 = $this->company->phone_2;
-        $this->register_number = $this->company->register_number;
-        $this->company_url = $this->company->company_url;
+        $this->company = $company;
+        $this->company_name = $company->company_name;
+        $this->industry_id = $company->industry_id;
+        $this->company_size = $company->company_size->value;
+        $this->company_type = $company->company_type->value;
+        $this->email = $company->email;
+        $this->phone_1 = $company->phone_1;
+        $this->phone_2 = $company->phone_2;
+        $this->register_number = $company->register_number;
+        $this->company_url = $company->company_url;
+    }
+
+    public function refreshCompanyData()
+    {
+
+        $this->company->refresh();
+//        $this->mount(); // Optional: Um die Eigenschaften neu zu setzen
     }
 
     public function save(): void
     {
         $this->validate();
+
         $this->company->update([
             'company_name' => $this->company_name,
             'industry_id' => $this->industry_id,
@@ -50,6 +60,7 @@ class CompanyUpdate extends Component
             'phone_2' => $this->phone_2,
             'register_number' => $this->register_number,
         ]);
+
         Flux::toast(
             text: 'You can always update this in your settings.',
             heading: 'Changes saved.',
