@@ -1,89 +1,96 @@
-<div class="grid max-w-8xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
-    <div class="px-4 sm:px-0">
-        <h2 class="text-base/7 font-semibold dark:text-white text-gray-900">{{ __('Company Address Information')}}</h2>
-        <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{ __('Here are stored the main company information')}}</p>
-    </div>
+<x-layout.form>
+    <x-slot name="title">
+        {{ __('Address')}}
+    </x-slot>
 
-    <form wire:submit.prevent="save"
-          class="bg-white dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
-        <div x-data="addressInputs()" x-init="init()" class="px-4 py-6 sm:p-8">
-            <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-6 md:col-span-5 flex">
-                    <div class="mt-4">
-                        <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700" for="country">
-                            {{ __('Country') }}
-                        </label>
-                        <div class="relative mt-2">
-                            <div
-                                class="cursor-pointer flex-shrink-0 z-10 inline-flex min-w-[140px] items-center py-1 text-left px-2 text-sm font-medium sm:text-sm sm:leading-5 text-gray-500 bg-gray-100 border-0 border-gray-300 rounded-s-lg dark:bg-white/5 ring-1 ring-inset ring-gray-300 dark:ring-white/10"
-                                @click.prevent="toggleSelectCountry"
-                                @click.away="closeSelectCountry"
-                                @keydown.escape="closeSelectCountry"
-                            >
-                                <!-- Dummy Country Flag-->
-                                <div class="flex flex-wrap" x-show="!selectedCountry">
-                                    <div
-                                        class="text-gray-800 dark:text-gray-400 truncate px-2 py-0.5 my-0.5 flex items-center">
-                                        <svg
-                                            class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 5 36 26">
-                                            <path
-                                                d="M0 9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9Z"
-                                                fill="#6b7280"/>
-                                            <path
-                                                d="M17.848 25.922a1.625 1.625 0 1 0 0-3.25 1.625 1.625 0 0 0 0 3.25ZM21.372 11.88c-.792-.69-1.9-1.03-3.326-1.03-1.417 0-2.534.366-3.352 1.087a3.805 3.805 0 0 0-1.234 2.813h-.01v.65h2.925l.005-.457a1.787 1.787 0 0 1 .472-1.26c.295-.31.696-.456 1.194-.456 1.05 0 1.574.558 1.574 1.696 0 .375-.102.736-.305 1.071-.34.496-.748.94-1.213 1.32a4.59 4.59 0 0 0-1.26 1.64c-.228.56-.345 1.357-.345 2.296h2.59l.04-.665a2.742 2.742 0 0 1 .879-1.722l.822-.772a6.673 6.673 0 0 0 1.341-1.686 3.53 3.53 0 0 0 .386-1.614c-.005-1.255-.396-2.22-1.183-2.91Z"
-                                                fill="#ACABB1"/>
-                                        </svg>
+    <x-slot name="description">
+        {{ __('Here are stored the address information')}}
+    </x-slot>
 
-                                        <div class="px-2 truncate">??</div>
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                  stroke-width="2" d="m1 1 4 4 4-4"/>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-wrap" x-cloak x-show="selectedCountry">
-                                    <div
-                                        class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
-                                        <img
-                                            :src="selectedCountry ? '/flags/country-' + selectedCountry.code.toLowerCase() + '.svg' : ''"
-                                            class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
-                                        <div class="px-2 truncate"
-                                             x-text="selectedCountry && selectedCountry.code ? selectedCountry.code.toUpperCase() : ''"></div>
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                  stroke-width="2" d="m1 1 4 4 4-4"/>
-                                        </svg>
-                                    </div>
-                                </div>
+    <x-slot name="form">
+        <form wire:submit.prevent="save"
+              class="bg-white dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+            <div x-data="addressInputs()" x-init="init()" class="px-4 py-6 sm:p-8">
+                <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <div class="sm:col-span-6 md:col-span-5 flex">
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700"
+                                   for="country">
+                                {{ __('Country') }}
+                            </label>
+                            <div class="relative mt-2">
                                 <div
-                                    class="mt-1 min-w-[200px] dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
-                                    x-show="openCountryDropdown" x-cloak>
-                                    <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
-                                        <div class="relative w-full">
-                                            <x-icon.search/>
-                                            <input type="search" x-model="searchCountry"
-                                                   @click.prevent.stop="openCountryDropdown=true"
-                                                   placeholder="{{ __('Search..') }}"
-                                                   class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                    class="cursor-pointer flex-shrink-0 z-10 inline-flex min-w-[140px] items-center py-1 text-left px-2 text-sm font-medium sm:text-sm sm:leading-5 text-gray-500 bg-gray-100 border-0 border-gray-300 rounded-s-lg dark:bg-white/5 ring-1 ring-inset ring-gray-300 dark:ring-white/10"
+                                    @click.prevent="toggleSelectCountry"
+                                    @click.away="closeSelectCountry"
+                                    @keydown.escape="closeSelectCountry"
+                                >
+                                    <!-- Dummy Country Flag-->
+                                    <div class="flex flex-wrap" x-show="!selectedCountry">
+                                        <div
+                                            class="text-gray-800 dark:text-gray-400 truncate px-2 py-0.5 my-0.5 flex items-center">
+                                            <svg
+                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 5 36 26">
+                                                <path
+                                                    d="M0 9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9Z"
+                                                    fill="#6b7280"/>
+                                                <path
+                                                    d="M17.848 25.922a1.625 1.625 0 1 0 0-3.25 1.625 1.625 0 0 0 0 3.25ZM21.372 11.88c-.792-.69-1.9-1.03-3.326-1.03-1.417 0-2.534.366-3.352 1.087a3.805 3.805 0 0 0-1.234 2.813h-.01v.65h2.925l.005-.457a1.787 1.787 0 0 1 .472-1.26c.295-.31.696-.456 1.194-.456 1.05 0 1.574.558 1.574 1.696 0 .375-.102.736-.305 1.071-.34.496-.748.94-1.213 1.32a4.59 4.59 0 0 0-1.26 1.64c-.228.56-.345 1.357-.345 2.296h2.59l.04-.665a2.742 2.742 0 0 1 .879-1.722l.822-.772a6.673 6.673 0 0 0 1.341-1.686 3.53 3.53 0 0 0 .386-1.614c-.005-1.255-.396-2.22-1.183-2.91Z"
+                                                    fill="#ACABB1"/>
+                                            </svg>
+
+                                            <div class="px-2 truncate">??</div>
+                                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                      stroke-linejoin="round"
+                                                      stroke-width="2" d="m1 1 4 4 4-4"/>
+                                            </svg>
                                         </div>
                                     </div>
-                                    <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
-                                        <div x-cloak x-show="filteredCountries().length === 0"
-                                             class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
-                                            {{ __('No results match your search') }}
+
+                                    <div class="flex flex-wrap" x-cloak x-show="selectedCountry">
+                                        <div
+                                            class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
+                                            <img
+                                                :src="selectedCountry ? '/flags/country-' + selectedCountry.code.toLowerCase() + '.svg' : ''"
+                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
+                                            <div class="px-2 truncate"
+                                                 x-text="selectedCountry && selectedCountry.code ? selectedCountry.code.toUpperCase() : ''"></div>
+                                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                      stroke-linejoin="round"
+                                                      stroke-width="2" d="m1 1 4 4 4-4"/>
+                                            </svg>
                                         </div>
-                                        <template x-for="(country, index) in filteredCountries()" :key="country.id">
-                                            <div class="relative">
-                                                <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                                     :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCountryId === country.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCountryId !== country.id}"
-                                                     @click.prevent.stop="selectCountry(country)"
-                                                     @mouseenter="highlightIndex = index"
-                                                     :class="{'bg-gray-100': highlightIndex === index}">
+                                    </div>
+                                    <div
+                                        class="mt-1 min-w-[200px] dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
+                                        x-show="openCountryDropdown" x-cloak>
+                                        <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
+                                            <div class="relative w-full">
+                                                <x-icon.search/>
+                                                <input type="search" x-model="searchCountry"
+                                                       @click.prevent.stop="openCountryDropdown=true"
+                                                       placeholder="{{ __('Search..') }}"
+                                                       class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                            </div>
+                                        </div>
+                                        <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
+                                            <div x-cloak x-show="filteredCountries().length === 0"
+                                                 class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
+                                                {{ __('No results match your search') }}
+                                            </div>
+                                            <template x-for="(country, index) in filteredCountries()" :key="country.id">
+                                                <div class="relative">
+                                                    <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                                         :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCountryId === country.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCountryId !== country.id}"
+                                                         @click.prevent.stop="selectCountry(country)"
+                                                         @mouseenter="highlightIndex = index"
+                                                         :class="{'bg-gray-100': highlightIndex === index}">
                                         <span
                                             class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
                                             <svg x-show="selectedCountryId === country.id" class="w-4 h-4"
@@ -93,83 +100,84 @@
                                                       clip-rule="evenodd"/>
                                             </svg>
                                         </span>
-                                                    <div class="inline-flex items-center mt-1">
-                                                        <template x-if="country.code">
-                                                            <img
-                                                                :src="'/flags/country-' + country.code.toLowerCase() + '.svg'"
-                                                                alt="Flag"
-                                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/90 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
-                                                        </template>
-                                                        <span class="ml-2" x-text="country.name"></span>
+                                                        <div class="inline-flex items-center mt-1">
+                                                            <template x-if="country.code">
+                                                                <img
+                                                                    :src="'/flags/country-' + country.code.toLowerCase() + '.svg'"
+                                                                    alt="Flag"
+                                                                    class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/90 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
+                                                            </template>
+                                                            <span class="ml-2" x-text="country.name"></span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </template>
+                                            </template>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Country Dropdown End-->
+                        <!-- Country Dropdown End-->
 
-                    <div class="mt-4 relative w-full">
-                        <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700" for="state">
-                            {{ __('State') }}
-                        </label>
-                        <div autofocus
-                             class="mt-2 block w-min-[200px] relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 rounded-l-none ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
-                             @click.prevent="toggleSelectState"
-                             @click.away="closeSelectState"
-                             @keydown.escape="closeSelectState"
-                        >
-                            <div class="inline-block m-1 pl-2 text-sm text-gray-400 cursor-pointer"
-                                 x-show="!selectedState"
-                                 x-text="'{{ __('Select a state') }}'">&nbsp;
-                            </div>
-                            <div class="ml-2 flex flex-wrap cursor-pointer" x-cloak x-show="selectedState">
+                        <div class="mt-4 relative w-full">
+                            <label class="block text-sm font-medium leading-6 dark:text-white text-gray-700"
+                                   for="state">
+                                {{ __('State') }}
+                            </label>
+                            <div autofocus
+                                 class="mt-2 block w-min-[200px] relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 rounded-l-none ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
+                                 @click.prevent="toggleSelectState"
+                                 @click.away="closeSelectState"
+                                 @keydown.escape="closeSelectState"
+                            >
+                                <div class="inline-block m-1 pl-2 text-sm text-gray-400 cursor-pointer"
+                                     x-show="!selectedState"
+                                     x-text="'{{ __('Select a state') }}'">&nbsp;
+                                </div>
+                                <div class="ml-2 flex flex-wrap cursor-pointer" x-cloak x-show="selectedState">
+                                    <div
+                                        class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
+
+                                        <template x-if="selectedState && selectedState.code">
+                                            <img :src="'/flags/state/' + selectedState.code.toLowerCase() + '.svg'"
+                                                 alt="Flag"
+                                                 class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
+                                        </template>
+
+                                        <div class="px-2 truncate" x-text="selectedStateName"></div>
+
+                                        <svg class="w-2.5 h-2.5 ms-2.5 justify-end" aria-hidden="true"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="2" d="m1 1 4 4 4-4"/>
+                                        </svg>
+                                    </div>
+                                </div>
                                 <div
-                                    class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
-
-                                    <template x-if="selectedState && selectedState.code">
-                                        <img :src="'/flags/state/' + selectedState.code.toLowerCase() + '.svg'"
-                                             alt="Flag"
-                                             class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
-                                    </template>
-
-                                    <div class="px-2 truncate" x-text="selectedStateName"></div>
-
-                                    <svg class="w-2.5 h-2.5 ms-2.5 justify-end" aria-hidden="true"
-                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div
-                                class="mt-1 w-full dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
-                                x-show="openStateDropdown" x-cloak>
-                                <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
-                                    <div class="relative w-full">
-                                        <x-icon.search/>
-                                        <input type="search" x-model="searchState"
-                                               @click.prevent.stop="openStateDropdown=true"
-                                               placeholder="{{ __('Search..') }}"
-                                               class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                    class="mt-1 w-full dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
+                                    x-show="openStateDropdown" x-cloak>
+                                    <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
+                                        <div class="relative w-full">
+                                            <x-icon.search/>
+                                            <input type="search" x-model="searchState"
+                                                   @click.prevent.stop="openStateDropdown=true"
+                                                   placeholder="{{ __('Search..') }}"
+                                                   class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                        </div>
                                     </div>
-                                </div>
-                                <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
-                                    <div x-cloak x-show="filteredStates().length === 0"
-                                         class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
-                                        {{ __('No results match your search') }}
-                                    </div>
+                                    <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
+                                        <div x-cloak x-show="filteredStates().length === 0"
+                                             class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
+                                            {{ __('No results match your search') }}
+                                        </div>
 
-                                    <template x-for="(state, index) in filteredStates()" :key="state.id">
-                                        <div class="relative">
-                                            <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                                 :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedStateId === state.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedStateId !== state.id}"
-                                                 @click.prevent.stop="selectState(state)"
-                                                 @mouseenter="highlightIndex = index"
-                                                 :class="{'bg-gray-100': highlightIndex === index}">
+                                        <template x-for="(state, index) in filteredStates()" :key="state.id">
+                                            <div class="relative">
+                                                <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                                     :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedStateId === state.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedStateId !== state.id}"
+                                                     @click.prevent.stop="selectState(state)"
+                                                     @mouseenter="highlightIndex = index"
+                                                     :class="{'bg-gray-100': highlightIndex === index}">
                                                 <span
                                                     class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
                                                     <svg x-show="selectedStateId === state.id" class="w-4 h-4"
@@ -179,94 +187,94 @@
                                                               clip-rule="evenodd"/>
                                                     </svg>
                                                 </span>
-                                                <div class="inline-flex items-center mt-1">
-                                                    <template x-if="state.code">
-                                                        <img
-                                                            :src="'/flags/state/' + state.code.toLowerCase() + '.svg'"
-                                                            alt="Flag"
-                                                            class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
-                                                    </template>
-                                                    <span class="ml-2" x-text="state.name"></span>
+                                                    <div class="inline-flex items-center mt-1">
+                                                        <template x-if="state.code">
+                                                            <img
+                                                                :src="'/flags/state/' + state.code.toLowerCase() + '.svg'"
+                                                                alt="Flag"
+                                                                class="h-5 w-5 me-2 flex-none rounded-b-2xl shadow-md dark:shadow-sm-light object-cover ring-1 ring-gray-700/20 dark:ring-white/10 bg-gray-500 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
+                                                        </template>
+                                                        <span class="ml-2" x-text="state.name"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </template>
-                                </div>
-                                <flux:button icon="plus"
-                                             class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
-                                             variant="filled">{{ __('Add new State') }}</flux:button>
+                                        </template>
+                                    </div>
+                                    <flux:button icon="plus"
+                                                 class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
+                                                 variant="filled">{{ __('Add new State') }}</flux:button>
 
-                                {{--                            <livewire:address.state.create-state/>--}}
+                                    {{--                            <livewire:address.state.create-state/>--}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="sm:col-span-3">
-                    <x-input.group
-                        label="{{ __('Street + Number') }}"
-                        for="street_number"
-                        badge="{{ __('* Required') }}"
-                        :error="$errors->first('street_number')"
-                        help-text="{{ __('') }}"
-                        model="street_number"
-                    >
-                        <x-input.text
-                            wire:model="street_number"
-                            name="street_number"
-                            id="street_number"
-                            placeholder="{{ __('Musterstrasse 25') }}"
-                        />
-                    </x-input.group>
-                </div>
-
-                <div class="sm:col-span-3">
-                    <!-- City Dropdown -->
-                    <label class="block text-sm font-medium leading-6 text-gray-900 dark:text-white" for="Zip City">
-                        {{ __('ZIP & State / Province') }}
-                    </label>
-                    <div class="relative mt-2">
-                        <div
-                            class="block relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
-                            @click.prevent="toggleSelectCity"
-                            @click.away="closeSelectCity"
-                            @keydown.escape="closeSelectCity"
+                    <div class="sm:col-span-3">
+                        <x-input.group
+                            label="{{ __('Street + Number') }}"
+                            for="street_number"
+                            badge="{{ __('* Required') }}"
+                            :error="$errors->first('street_number')"
+                            help-text="{{ __('') }}"
+                            model="street_number"
                         >
-                            <div class="inline-block m-1 pl-2 text-sm text-gray-400" x-show="!selectedCity"
-                                 x-text="'{{ __('Select a city') }}'">&nbsp;
-                            </div>
-                            <div class="flex flex-wrap" x-cloak x-show="selectedCity">
-                                <div
-                                    class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
+                            <x-input.text
+                                wire:model="street_number"
+                                name="street_number"
+                                id="street_number"
+                                placeholder="{{ __('Musterstrasse 25') }}"
+                            />
+                        </x-input.group>
+                    </div>
 
-                                    <div class="px-2 truncate" x-text="selectedCityName"></div>
-
-                                    <svg class="w-2.5 h-2.5 ms-2.5 justify-end" aria-hidden="true"
-                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="2" d="m1 1 4 4 4-4"/>
-                                    </svg>
-                                </div>
-                            </div>
+                    <div class="sm:col-span-3">
+                        <!-- City Dropdown -->
+                        <label class="block text-sm font-medium leading-6 text-gray-900 dark:text-white" for="Zip City">
+                            {{ __('ZIP & State / Province') }}
+                        </label>
+                        <div class="relative mt-2">
                             <div
-                                class="mt-1 w-full dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
-                                x-show="openCityDropdown" x-cloak>
-                                <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
-                                    <div class="relative w-full">
-                                        <x-icon.search/>
-                                        <input type="search" x-model="searchCity"
-                                               @click.prevent.stop="openCityDropdown=true"
-                                               placeholder="{{ __('Search..') }}"
-                                               class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                class="block relative content-center w-full py-1 text-left bg-white dark:bg-white/5 border-0 ring-1 ring-inset ring-gray-300 dark:ring-white/10 rounded-md sm:text-sm sm:leading-5"
+                                @click.prevent="toggleSelectCity"
+                                @click.away="closeSelectCity"
+                                @keydown.escape="closeSelectCity"
+                            >
+                                <div class="inline-block m-1 pl-2 text-sm text-gray-400" x-show="!selectedCity"
+                                     x-text="'{{ __('Select a city') }}'">&nbsp;
+                                </div>
+                                <div class="flex flex-wrap" x-cloak x-show="selectedCity">
+                                    <div
+                                        class="text-gray-800 dark:text-white truncate px-2 py-0.5 my-0.5 flex items-center">
+
+                                        <div class="px-2 truncate" x-text="selectedCityName"></div>
+
+                                        <svg class="w-2.5 h-2.5 ms-2.5 justify-end" aria-hidden="true"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="2" d="m1 1 4 4 4-4"/>
+                                        </svg>
                                     </div>
                                 </div>
-                                <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
-                                    <div x-cloak x-show="filteredCities().length === 0"
-                                         class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
-                                        {{ __('No results match your search') }}
+                                <div
+                                    class="mt-1 w-full dark:bg-gray-800 shadow-md dark:border dark:border-gray-700 bg-white rounded-b-md absolute top-full left-0 z-30"
+                                    x-show="openCityDropdown" x-cloak>
+                                    <div class="relative z-30 w-full p-2 bg-white dark:bg-gray-800">
+                                        <div class="relative w-full">
+                                            <x-icon.search/>
+                                            <input type="search" x-model="searchCity"
+                                                   @click.prevent.stop="openCityDropdown=true"
+                                                   placeholder="{{ __('Search..') }}"
+                                                   class="block w-full px-2.5 pl-10 text-gray-900 placeholder:dark:text-gray-500 placeholder:text-gray-400 rounded-md text-sm border-0 ring-1 ring-inset ring-gray-300 focus:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:focus:ring-indigo-500 dark:ring-gray-700/50 dark:bg-white/5 dark:text-white">
+                                        </div>
                                     </div>
-                                    <template x-for="(city, index) in filteredCities()" :key="city.id">
-                                        <div class="relative">
+                                    <div x-ref="dropdown" class="relative z-30 p-2 overflow-y-auto max-h-60">
+                                        <div x-cloak x-show="filteredCities().length === 0"
+                                             class="text-gray-400 dark:text-gray-400 flex justify-center items-center">
+                                            {{ __('No results match your search') }}
+                                        </div>
+                                        <template x-for="(city, index) in filteredCities()" :key="city.id">
+                                            <div class="relative">
                                             <span
                                                 class="absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700 dark:text-gray-300">
                                                     <svg x-show="selectedCityId === city.id" class="w-4 h-4"
@@ -277,60 +285,46 @@
                                                               clip-rule="evenodd"/>
                                                     </svg>
                                                 </span>
-                                            <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
-                                                 :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCityId === city.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCityId !== city.id}"
-                                                 @click.prevent.stop="selectCity(city)"
-                                                 @mouseenter="highlightIndex = index"
-                                                 :class="{'bg-gray-100': highlightIndex === index}">
-                                                <span class="ml-2" x-text="city.name"></span>
+                                                <div class="py-1.5 px-3 mb-1 rounded-lg text-sm cursor-pointer"
+                                                     :class="{'dark:bg-gray-700/50 dark:text-gray-300 bg-gray-100 text-gray-800': selectedCityId === city.id, 'text-gray-600 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50 dark:hover:text-gray-300': selectedCityId !== city.id}"
+                                                     @click.prevent.stop="selectCity(city)"
+                                                     @mouseenter="highlightIndex = index"
+                                                     :class="{'bg-gray-100': highlightIndex === index}">
+                                                    <span class="ml-2" x-text="city.name"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </template>
+                                        </template>
+                                    </div>
+
+                                    <flux:modal.trigger name="edit-profile">
+                                        <flux:button icon="plus"
+                                                     class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
+                                                     variant="filled">{{ __('Add new Zip & City') }}</flux:button>
+
+                                    </flux:modal.trigger>
                                 </div>
-
-                                <flux:modal.trigger name="edit-profile">
-                                    <flux:button icon="plus"
-                                                 class="w-full rounded-tr-none rounded-tl-none rounded-lg dark:bg-white/5 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-700/90 dark:hover:text-gray-300 border-t border-gray-200 dark:border-gray-700"
-                                                 variant="filled">{{ __('Add new Zip & City') }}</flux:button>
-
-                                </flux:modal.trigger>
-                                 </div>
+                            </div>
                         </div>
                     </div>
+
+                    <input type="hidden" wire:model="country_id" x-ref="countryIdInput">
+                    <input type="hidden" wire:model="state_id" x-ref="stateIdInput">
+                    <input type="hidden" wire:model="city_id" x-ref="cityIdInput">
+
+
                 </div>
-
-                <input type="hidden" wire:model="country_id" x-ref="countryIdInput">
-                <input type="hidden" wire:model="state_id" x-ref="stateIdInput">
-                <input type="hidden" wire:model="city_id" x-ref="cityIdInput">
-
-
             </div>
-        </div>
-        <!-- Address Information End-->
+            <!-- Address Information End-->
 
-        <!-- Update Button -->
-        <x-button.update>
-            {{ __('Update')}}
-        </x-button.update>
+            <!-- Update Button -->
+            <x-button.update>
+                {{ __('Update')}}
+            </x-button.update>
+        </form>
 
-    </form>
-    <flux:modal name="edit-profile" variant="flyout" class="space-y-6">
-        <div>
-            <flux:heading size="lg">Update profile</flux:heading>
-            <flux:subheading>Make changes to your personal details.</flux:subheading>
-        </div>
+    </x-slot>
 
-        <flux:input label="Name" placeholder="Your name" />
-
-        <flux:input label="Date of birth" type="date" />
-
-        <div class="flex">
-            <flux:spacer />
-
-            <flux:button type="submit" variant="primary">Save changes</flux:button>
-        </div>
-    </flux:modal>
-</div>
+</x-layout.form>
 
 <script>
     function addressInputs() {
